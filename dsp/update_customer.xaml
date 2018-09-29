@@ -1,0 +1,114 @@
+﻿<Page x:Class="dsp.update_customer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dsp"
+      mc:Ignorable="d" 
+      d:DesignHeight="1125" d:DesignWidth="1450"
+      Height="Auto" Width="auto"
+      Title="update_customer">
+    <Page.Resources>
+        <ControlTemplate x:Key="UP" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="Black" RadiusY="37.034" RadiusX="37.034" Stroke="Black"/>
+                <Label x:Name="label" Content="UPDATE" Margin="33,8,27,10" Foreground="White" FontSize="12"/>
+            </Grid>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Grid Background="#FFF0EDC4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1600"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="Gray" Grid.Row="0" Margin="0"/>
+        <Button x:Name="backbut" Content="" HorizontalAlignment="Left" Height="55" Margin="10,10,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="backbut_Click" Grid.Row="0">
+            <Button.Background>
+                <ImageBrush ImageSource="arrow-left-bold-circle.png"/>
+            </Button.Background>
+        </Button>
+        <Viewbox Stretch="Uniform" Margin="456,20,456,31">
+            <TextBlock x:Name="textBlock"  TextAlignment="Center" TextWrapping="Wrap" Text="UPDATE CUSTOMER DETAILS" FontWeight="Bold"  Width="Auto" Grid.Row="0" FontSize="20"/>
+        </Viewbox>
+
+        <ScrollViewer HorizontalAlignment="Stretch" Margin="0,0,0,0"  Background="#fff0edc4" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <Grid Background="#fff0edc4" Margin="0,0,0,0" MinHeight="1150" MinWidth="1450" Height="1600" Width="Auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="1610*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform" Margin="10,30,0,0" HorizontalAlignment="Left"  Grid.Row="0" >
+                    <TextBlock x:Name="textBlock2" TextAlignment="Right"  MinHeight="30"  HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" FontWeight="Bold"   Grid.Row="0" Width="232" Height="47"><Run Text="Search customer:"/><LineBreak/><Run Text="(enter phone number with country code)"/></TextBlock>
+                </Viewbox>
+                <TextBox x:Name="textBox" HorizontalAlignment="Left"  Margin="305,30,0,20" TextWrapping="Wrap"   Width="216" TextChanged="textBox_TextChanged" Grid.Row="0"/>
+                <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="4,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <Image x:Name="image1" MinHeight="44" Height="44" Margin="10,50,1383,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-user-filled-100.png"/>
+                <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="44" Margin="116,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="NAME" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <Image x:Name="image1_Copy" MinHeight="44" Height="44" Margin="10,260,1383,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-marker-filled-50.png"/>
+                <Image x:Name="image1_Copy1" MinHeight="44" Height="44" Margin="10,120,1383,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-cell-phone-90.png"/>
+                <Image x:Name="image1_Copy2" MinHeight="44" Height="44" Margin="10,190,1383,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-street-view-52.png"/>
+                <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="44" Margin="116,260,0,0" Grid.Row="1" TextWrapping="Wrap" Text="DISTRICT NAME" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy1" HorizontalAlignment="Left" Height="44" Margin="116,190,0,0" Grid.Row="1" TextWrapping="Wrap" Text="ADDRESS LINE" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy2" HorizontalAlignment="Left" Height="44" Margin="116,120,0,0" Grid.Row="1" TextWrapping="Wrap" Text="PHONE NUMBER" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <Image x:Name="image1_Copy3" MinHeight="44" Height="44" Margin="450,50,950,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-museum-96.png"/>
+                <Image x:Name="image1_Copy5" MinHeight="44" Height="44" Margin="450,120,950,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-country-filled-100.png"/>
+                <Image x:Name="image1_Copy6" MinHeight="44" Height="44" Margin="450,190,950,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-postal-filled-100.png"/>
+                <Image x:Name="image1_Copy7" MinHeight="44" Height="44" Margin="450,260,950,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-new-post-filled-100.png"/>
+                <TextBox x:Name="textBox1_Copy3" HorizontalAlignment="Left" Height="44" Margin="566,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="STATE NAME" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy4" HorizontalAlignment="Left" Height="44" Margin="566,120,0,0" Grid.Row="1" TextWrapping="Wrap" Text="COUNTRY NAME" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy5" HorizontalAlignment="Left" Height="44" Margin="566,190,0,0" Grid.Row="1" TextWrapping="Wrap" Text="PIN CODE" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy6" HorizontalAlignment="Left" Height="44" Margin="566,260,0,0" Grid.Row="1" TextWrapping="Wrap" Text="MAIL ID" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <Image x:Name="image1_Copy4" MinHeight="44" Height="44" Margin="910,50,517,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-birthday-filled-100.png"/>
+                <Image x:Name="image1_Copy8" MinHeight="44" Height="44" Margin="910,120,517,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-wedding-filled-50.png"/>
+                <Image x:Name="image1_Copy9" MinHeight="44" Height="44" Margin="910,190,517,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-wedding-day-filled-50.png"/>
+                <Image x:Name="image1_Copy10" MinHeight="44" Height="44" Margin="24,446,1403,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-passport-filled-50.png"/>
+                <DatePicker HorizontalAlignment="Left" Height="44" Margin="978,50,0,0" Grid.Row="1" VerticalAlignment="Top" Width="214"/>
+                <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="10,368,-2,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <DatePicker HorizontalAlignment="Left" Height="44" Margin="978,190,0,0" Grid.Row="1" VerticalAlignment="Top" Width="214"/>
+                <ComboBox x:Name="update_id_proof" HorizontalAlignment="Left" Height="42" Margin="116,448,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260"/>
+                <TextBox x:Name="textBox1_Copy7" HorizontalAlignment="Left" Height="44" Margin="566,446,0,0" Grid.Row="1" TextWrapping="Wrap" Text="OTHERS" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <TextBox x:Name="textBox1_Copy8" HorizontalAlignment="Left" Height="44" Margin="978,446,0,0" Grid.Row="1" TextWrapping="Wrap" Text="ID NUMBER" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <Label x:Name="label5" Content="CUSTOMER'S DETAILS :" HorizontalAlignment="Left" Height="47" Margin="12,-43,0,0" VerticalAlignment="Top" Width="232" FontWeight="Bold" FontSize="20" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.167"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="29" Margin="40,397,0,0" Grid.Row="1" TextWrapping="Wrap" Text="ID PROOF" VerticalAlignment="Top" Width="234" FontWeight="Bold" FontSize="20"/>
+                <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="10,539,-2,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <CheckBox x:Name="checkBox" Content="FOREIGNER" HorizontalAlignment="Left" Height="44" Margin="979,268,0,0" Grid.Row="1" VerticalAlignment="Top" Width="213"/>
+                <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Height="43" Margin="40,576,0,0" Grid.Row="1" TextWrapping="Wrap" Text="C FORM (applicable for foreigner)" VerticalAlignment="Top" Width="324" FontWeight="Bold" FontSize="20"/>
+                <Image x:Name="image1_Copy11" MinHeight="44" Height="44" Margin="24,640,1403,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-passport-filled-50.png"/>
+                <TextBox x:Name="textBox1_Copy9" HorizontalAlignment="Left" Height="44" Margin="116,640,0,0" Grid.Row="1" TextWrapping="Wrap" Text="PASSPORT NUMBER" VerticalAlignment="Top" Width="260" Foreground="Gray"/>
+                <Image x:Name="image1_Copy12" MinHeight="44" Height="44" Margin="24,710,1403,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-today-30.png"/>
+                <DatePicker HorizontalAlignment="Left" Height="44" Margin="116,710,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260"/>
+                <TextBox x:Name="textBox1_Copy10" HorizontalAlignment="Left" Height="44" Margin="116,780,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" Foreground="Gray" Text="PLACE OF ISSUE"/>
+                <Image x:Name="image1_Copy13" MinHeight="44" Height="44" Margin="24,780,1403,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-marker-filled-50.png"/>
+                <Label x:Name="label7" Content="WHETHER EMPLOYED &#xA;IN INDIA :" HorizontalAlignment="Left" Height="44" Margin="450,640,0,0" VerticalAlignment="Top" Width="167" FontWeight="Bold" Grid.Row="1"/>
+                <RadioButton x:Name="radioButton" Content="YES" HorizontalAlignment="Left" Height="44" Margin="622,640,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108"/>
+                <RadioButton x:Name="radioButton_Copy" Content="NO" HorizontalAlignment="Left" Height="44" Margin="684,640,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108"/>
+                <Label x:Name="label7_Copy" Content="DATE OF ARRIVAL" HorizontalAlignment="Left" Height="44" Margin="450,710,0,0" VerticalAlignment="Top" Width="167" FontWeight="Bold" Grid.Row="1"/>
+                <DatePicker HorizontalAlignment="Left" Height="44" Margin="622,710,0,0" Grid.Row="1" VerticalAlignment="Top" Width="204"/>
+
+                <Rectangle Fill="#FFF0EBAB" HorizontalAlignment="Left" Height="276" Margin="917,576,0,0" Grid.Row="1" VerticalAlignment="Top" Width="453"/>
+                <TextBlock x:Name="textBlock1Copy" HorizontalAlignment="Left" Height="43" Margin="1020,581,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CERTIFICATE OF REGISTRATION (visa):" VerticalAlignment="Top" Width="260" FontSize="15" TextDecorations="Underline"/>
+                <Image x:Name="image1_Copy14" MinHeight="44" Height="44" Margin="984,780,443,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-passport-filled-50.png"/>
+                <TextBox x:Name="textBox1_Copy11" HorizontalAlignment="Left" Height="44" Margin="1068,710,0,0" Grid.Row="1" TextWrapping="Wrap" Text="PASSPORT NUMBER" VerticalAlignment="Top" Width="212" Foreground="Gray"/>
+                <Image x:Name="image1_Copy15" MinHeight="44" Height="44" Margin="979,640,443,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-today-30.png"/>
+                <DatePicker HorizontalAlignment="Left" Height="44" Margin="1068,640,0,0" Grid.Row="1" VerticalAlignment="Top" Width="212"/>
+                <Image x:Name="image1_Copy16" MinHeight="44" Height="44" Margin="984,710,443,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-marker-filled-50.png"/>
+                <TextBox x:Name="textBox1_Copy12" HorizontalAlignment="Left" Height="44" Margin="1068,780,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Foreground="Gray" Text="PLACE OF ISSUE"/>
+                <TextBox x:Name="textBox1_Copy13" HorizontalAlignment="Left" Height="44" Margin="622,788,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Foreground="Gray" Text="DURATION OF STAY"/>
+                <Image x:Name="image1_Copy17" MinHeight="44" Height="44" Margin="477,780,950,0" VerticalAlignment="Top" MinWidth="44" Width="Auto" Grid.Row="1" Source="icons8-watch-filled-100 (1).png"/>
+                <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="54" Margin="640,866,0,0" Grid.Row="1" VerticalAlignment="Top" Width="122" Template="{DynamicResource UP}"/>
+            </Grid>
+
+        </ScrollViewer>
+
+    </Grid>
+</Page>

@@ -1,0 +1,34 @@
+﻿<Application x:Class="dsp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:dsp"
+             StartupUri="startupscreen.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.amber.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.amber.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style BasedOn="{StaticResource MaterialDesignListView}"
+                   TargetType="{x:Type ListView}">
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Visible"/>
+                <Setter Property="Background" Value="White"/>
+            </Style>
+            <ControlTemplate x:Key="standard_button" TargetType="{x:Type Button}">
+                <Grid Margin="-22,-17,-16,13">
+                    <Rectangle Fill="Black" Margin="10" RadiusY="37.034" RadiusX="37.034" Stroke="Black"/>
+                    <Label x:Name="label" Content="LOG IN" Margin="50,13,45,17" Foreground="White"/>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="stdbutton" TargetType="{x:Type Button}">
+                <Grid>
+                    <Rectangle Fill="Black" RadiusY="37.034" RadiusX="37.034" Stroke="Black"/>
+                    <Label x:Name="label" Content="LOG IN" Margin="33,8,27,10" Foreground="White" FontSize="12"/>
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

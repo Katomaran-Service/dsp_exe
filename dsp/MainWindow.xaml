@@ -1,0 +1,151 @@
+﻿<Window x:Class="dsp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dsp"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="700" Height="700" MinWidth="1200" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized">
+    <Window.Resources>
+        <ControlTemplate x:Key="logout" TargetType="{x:Type Button}">
+            <Grid Margin="19.617,0,17.497,0">
+                <Label x:Name="label" Content="LOGOUT" Margin="4.521,2.018,3.461,2.765" FontWeight="Bold" Foreground="#FFF0EDC4" FontSize="15"/>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="close" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Red"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Margin="5.823,1.472,5.105,2.151" Source="icons8-delete-filled-100.png" Grid.RowSpan="2"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="headergrid" TargetType="{x:Type Grid}"/>
+        <ControlTemplate x:Key="mini" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Margin="5.823,1.472,5.105,2.151" Source="icons8-horizontal-line-48 (2).png" Grid.RowSpan="2"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="max" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Margin="5.823,1.472,5.105,2.151" Source="window-maximize.png" Grid.RowSpan="2"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="re" TargetType="{x:Type Button}">
+            <ControlTemplate.Resources>
+                <Storyboard x:Key="OnMouseEnter1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0" Value="Gray"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+                <Storyboard x:Key="OnMouseLeave1">
+                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
+                        <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </ControlTemplate.Resources>
+            <Grid x:Name="grid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="image" Margin="5.823,1.472,5.105,2.151" Source="window-restore.png" Grid.RowSpan="2"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="grid">
+                    <BeginStoryboard Storyboard="{StaticResource OnMouseEnter1}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="grid">
+                    <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+                </EventTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="56*"/>
+        </Grid.RowDefinitions>
+        <Grid MinHeight="97" Height="Auto" VerticalAlignment="Stretch" Background="Black" Style="{DynamicResource headergrid}" Grid.Row="0" Margin="0">
+            <Grid HorizontalAlignment="Left" Margin="59.886,0,0,0" Width="112.048" Background="Black"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Margin="59.764,-0.226,0,0" Width="111.832" Source="dream-logo.png"/>
+            <Button x:Name="LOGOUT_BUT" Content="Button" HorizontalAlignment="Right" Height="31.999" Margin="0,10,255.034,0" VerticalAlignment="Top" Width="118.587" Template="{DynamicResource logout}" RenderTransformOrigin="0.81,0.335" Click="logout"/>
+            <TextBlock x:Name="username_txt" HorizontalAlignment="Right" Margin="0,0,16.064,0" TextWrapping="Wrap" Width="475.913" FontSize="25" Background="Black" Foreground="White" Text="Hello, " Height="40.754" VerticalAlignment="Bottom"/>
+            <Button x:Name="close" Content="Button" HorizontalAlignment="Right" Height="31.999" Margin="0,10,16.064,0" VerticalAlignment="Top" Width="60.234" Template="{DynamicResource close}" Click="close_window"/>
+            <Button x:Name="maxi_but" Content="Button" HorizontalAlignment="Right" Height="32" Margin="0,10,76,0" VerticalAlignment="Top" Width="61" Template="{DynamicResource max}" Click="maxi_but_Click"/>
+            <Button x:Name="restore_but" Content="Button" HorizontalAlignment="Right" Height="32" Margin="0,10,76,0" VerticalAlignment="Top" Width="61" Template="{DynamicResource re}" Click="restore_but_Click" Visibility="Collapsed"/>
+            <Button x:Name="minimize_but_Copy" Content="Button" HorizontalAlignment="Right" Height="32" Margin="0,10,137,0" VerticalAlignment="Top" Width="61" Template="{DynamicResource mini}" Click="minimize_but_Click"/>
+        </Grid>
+        <Frame x:Name="main_frame"  Content=""  MinHeight="603" Height="Auto" VerticalAlignment="Stretch" MinWidth="1200" Width="Auto" NavigationUIVisibility="Hidden" Grid.Row="1" Margin="0"/>
+
+    </Grid>
+</Window>

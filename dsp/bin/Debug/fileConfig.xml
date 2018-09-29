@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="DBConnectionString" value="Data Source=localhost\SQLEXPRESS;Initial Catalog=DSP_hotel;Integrated Security=True" />
+    <add key="ID_Proofs" value="VOTER ID CARD,DRIVING LICENSE,AADHAR CARD,PASSPORT,PANCARD,OTHERS" />
+    <add key="Source_of_booking" value="LOCAL,YATRA,OYO,TRIVAGO,OTHERS" />
+    <add key="Plan" value="CP,EP,AP,MAP" />
+    <add key="kot_log" value="log\kot_log.txt" />
+    <add key="front_log" value="log\frontdesk_log.txt" />
+    <add key="hk_log" value="log\hklog.txt" />
+    <add key="store_log" value="log\storelog.txt" />
+    <add key="purchase_order" value="generate\purchase order\" />
+    <add key="night_audit" value="generate\night auditing\" />
+    <add key="flash_report" value="generate\flash report\" />
+    <add key="invoice" value="generate\invoice\" />
+    <add key="laundry" value="PILLOW,BED SHEET" />
+    <add key="gst" value="0.18" />
+    <add key="date" value="8/15/2018 12:00:00 AM" />
+	<add key="segment" value="AFFT,FFIT,PAY BY OYO,PAY BY AIRBNB" />
+	<add key="mode" value="CASH,CARD,ONLINE BANKING"/>
+  </appSettings>
+</configuration>

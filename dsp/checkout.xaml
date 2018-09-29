@@ -1,0 +1,173 @@
+﻿<Page x:Class="dsp.checkout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dsp"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1500"
+      Title="checkout">
+    <Page.Resources>
+        <ControlTemplate x:Key="CHECKOUT" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="Black" RadiusY="37.034" RadiusX="37.034" Stroke="Black"/>
+                <Label x:Name="label" Content="CHECK OUT" Margin="33,8,27,10" Foreground="White" FontSize="12"/>
+            </Grid>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Grid Background="#FFF0EDC4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="750"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="Gray" Grid.Row="0" Margin="0"/>
+        <Button x:Name="backbut" Content="" HorizontalAlignment="Left" Height="55" Margin="10,10,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="backbut_Click" Grid.Row="0">
+            <Button.Background>
+                <ImageBrush ImageSource="arrow-left-bold-circle.png"/>
+            </Button.Background>
+        </Button>
+        <Viewbox Stretch="Uniform" Margin="456,20,456,31">
+            <TextBlock x:Name="textBlock"  TextAlignment="Center" TextWrapping="Wrap" Text="CHECKOUT" FontWeight="Bold"  Width="Auto" Grid.Row="0" FontSize="20"/>
+        </Viewbox>
+        <ScrollViewer HorizontalAlignment="Stretch" Margin="0,0,0,48"   Background="#fff0edc4" HorizontalScrollBarVisibility="Visible" Grid.Row="1">
+            <Grid Background="#fff0edc4" Margin="0,0,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="900*"/>
+                </Grid.RowDefinitions>
+                <Viewbox Stretch="Uniform" Margin="10,30,0,0" HorizontalAlignment="Left"  Grid.Row="0" >
+                    <TextBlock x:Name="textBlock2" TextAlignment="Right"  MinHeight="30"  HorizontalAlignment="Left"  TextWrapping="WrapWithOverflow" FontWeight="Bold" Width="232" Height="47"><Run Text="Search customer:"/><LineBreak/><Run Text="(enter phone number with country code)"/></TextBlock>
+                </Viewbox>
+                <TextBox x:Name="checkout_cc" HorizontalAlignment="Left"  Margin="305,30,0,20" TextWrapping="Wrap"   Width="62" TextChanged="textBox_TextChanged" Grid.Row="0"/>
+                <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="4,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="29" Margin="10,20,0,0" Grid.Row="1" TextWrapping="Wrap" Text="ROOMS CHECKED IN:" VerticalAlignment="Top" Width="234" FontWeight="Bold" FontSize="20"/>
+                <DataGrid x:Name="dataGrid"  Height="226" Margin="75,100,75,0" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Top" Width="1300"  IsReadOnly="True" AutoGenerateColumns="False" SelectedIndex="-1">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="S.No" Width="70" Binding="{Binding NUM}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Room no" Width="20*" Binding="{Binding ROOMNO}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="CHECK IN" Width="20*" Binding="{Binding CHECKIN}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="KOT" Width="20*" Binding="{Binding KOT}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Post charge" Width="20*" Binding="{Binding POST}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Room tariff" Width="20*" Binding="{Binding TARIFF}">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTemplateColumn Header="KOT" Width="100">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="kot_select"   MinWidth="163" Width="Auto" FontSize="15" FontWeight="Bold" Click="kot_select_Click" IsChecked="{Binding kot_check}"  IsEnabled="{Binding all_dis}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Post charge" Width="100">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="post_select"  MinWidth="163" Width="Auto" FontSize="15" FontWeight="Bold" Click="post_select_Click" IsChecked="{Binding post_check}" IsEnabled="{Binding all_dis}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Room cost" Width="80">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="room_select" MinWidth="163" Width="Auto" FontSize="15" FontWeight="Bold" Click="room_select_Click" IsChecked="{Binding room_check}" IsEnabled="{Binding all_dis}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="All" Width="80">
+                            <DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGridTemplateColumn.HeaderStyle>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="all_select" MinWidth="163" Width="Auto" FontSize="15" FontWeight="Bold" Click="all_select_Click" IsChecked="{Binding all_check}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <CheckBox x:Name="advance_checkbox" Content="INCLUDE ADVANCE AMOUNT" HorizontalAlignment="Left" Height="42" Margin="1185,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="190" Click="advance_checkbox_Click"/>
+                <Rectangle HorizontalAlignment="Stretch" Fill="Black" Height="4" Margin="10,355,-2,0" VerticalAlignment="Top" Grid.Row="1"/>
+                <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Height="29" Margin="10,388,0,0" Grid.Row="1" TextWrapping="Wrap" Text="PAYMENT:" VerticalAlignment="Top" Width="234" FontWeight="Bold" FontSize="20"/>
+                <Label x:Name="label" HorizontalAlignment="Left" Height="39" Margin="527,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="83" Content="MODE :" FontWeight="Bold" FontSize="15"/>
+                <ComboBox x:Name="mode_box" HorizontalAlignment="Left" Height="39" Margin="634,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="236"/>
+                <Label x:Name="label_Copy" HorizontalAlignment="Left" Height="39" Margin="75,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109" Content="AMOUNT :" FontWeight="Bold" FontSize="15"/>
+                <TextBox x:Name="checkout_amt" HorizontalAlignment="Left" Height="39" Margin="198,443,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" FontSize="15" IsReadOnly="True"/>
+                <Label x:Name="label_Copy1" HorizontalAlignment="Left" Height="39" Margin="957,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155" Content="TRANSACTION ID:" FontWeight="Bold" FontSize="15"/>
+                <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="39" Margin="1117,443,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" FontSize="15"/>
+                <Button x:Name="checkout_but" Content="Button" HorizontalAlignment="Left" Height="55" Margin="634,510,0,0" Grid.Row="1" VerticalAlignment="Top" Width="143" Template="{DynamicResource CHECKOUT}" Click="checkout_but_Click"/>
+                <Viewbox Stretch="Uniform" Margin="75,59,1220,820" Grid.Row="1">
+                    <Label x:Name="label_Copy2" HorizontalAlignment="Left" Height="39"  Grid.Row="1" VerticalAlignment="Top" Width="143" Content="CUSTOMER NAME:" FontWeight="Bold" FontSize="15"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Margin="260,59,1070,820" Grid.Row="1">
+                    <TextBlock x:Name="checkout_cust" HorizontalAlignment="Left" Height="36"  TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontSize="15"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Margin="460,59,920,820" Grid.Row="1">
+                    <Label x:Name="label_Copy3" HorizontalAlignment="Left" Height="39"  Grid.Row="1" VerticalAlignment="Top" Width="182" Content="DISCOUNT:" FontWeight="Bold" FontSize="15"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform"  Margin="565,59,850,830" Grid.Row="1">
+                    <TextBlock x:Name="checkout_dist" HorizontalAlignment="Left" Height="AUTO"  TextWrapping="Wrap" VerticalAlignment="Top" Width="93" FontSize="15"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Margin="765,59,620,820" Grid.Row="1">
+                    <Label x:Name="label_Copy4" HorizontalAlignment="Left" Height="39"  Grid.Row="1" VerticalAlignment="Top" Width="143" Content="ADVANCE:" FontWeight="Bold" FontSize="15"/>
+                </Viewbox>
+                <Viewbox Stretch="Uniform" Margin="860,59,390,820" Grid.Row="1">
+                    <TextBlock x:Name="checkout_adv" HorizontalAlignment="Left" Height="36"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225" FontSize="15"/>
+                </Viewbox>
+                
+                <TextBox x:Name="checkout_ph" HorizontalAlignment="Left"  Margin="394,30,0,20" TextWrapping="Wrap"   Width="216" TextChanged="textBox_TextChanged" Grid.Row="0"/>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

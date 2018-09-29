@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B92000D-AAE2-46E6-8C25-A7A2B0FAFC53}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dsp</RootNamespace>
+    <AssemblyName>dsp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.1.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.4.1.1101\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="checkin.xaml.cs">
+      <DependentUpon>checkin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.xaml.cs">
+      <DependentUpon>checkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="data.cs" />
+    <Compile Include="dbhandler.cs" />
+    <Compile Include="front_desk.xaml.cs">
+      <DependentUpon>front_desk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="hk.xaml.cs">
+      <DependentUpon>hk.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="main_pg.xaml.cs">
+      <DependentUpon>main_pg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="occupancy.xaml.cs">
+      <DependentUpon>occupancy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="room_block_pg.xaml.cs">
+      <DependentUpon>room_block_pg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="startupscreen.xaml.cs">
+      <DependentUpon>startupscreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="structdata.cs" />
+    <Compile Include="update_customer.xaml.cs">
+      <DependentUpon>update_customer.xaml</DependentUpon>
+    </Compile>
+    <Page Include="checkin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="front_desk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="hk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="main_pg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="occupancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="room_block_pg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="startupscreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="update_customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dream-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dream.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-delete-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="arrow-left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-user-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-front-desk-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-tableware-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ironing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-small-business-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-edit-graph-report-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-user-shield-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-hotel-check-in-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-hotel-check-out-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-bed-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-horizontal-line-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-rupee-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-update-user-80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-cancel-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-horizontal-line-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-user-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-street-view-52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-horizontal-line-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-home-address-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="74869977-transparent-futuristic-modern-abstract-line-layout-with-red-dotted-speed-swoosh-wind-border-wave-vec.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-museum-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-country-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-postal-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-cell-phone-90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-new-post-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-calendar-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-birthday-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-wedding-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-wedding-filled-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-wedding-day-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-passport-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-today-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-marker-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-airport-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-watch-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-hotel-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-bedroom-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-room-52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-user-groups-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-receive-cash-52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-rupee-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="plus-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-discount-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="arrow-left-bold-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-business-90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-plus-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="window-maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="window-restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-housekeeping-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-lock-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-unlock-52.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-unlock-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-lock-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-washing-machine-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-edit-property-filled-100.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

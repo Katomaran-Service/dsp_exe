@@ -1,0 +1,139 @@
+﻿<Page x:Class="dsp.occupancy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:dsp"
+      mc:Ignorable="d" 
+      d:DesignHeight="545" d:DesignWidth="1140"
+      Height="Auto" Width="auto"
+      Title="occupancy" Loaded="Page_Loaded">
+
+    <Grid Background="#FFF0EDC4">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="80" MaxHeight="90" Height="*"/>
+            <RowDefinition MinHeight="230" Height="*"/>
+            <RowDefinition MinHeight="230" Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="228" Width="*"/>
+                <ColumnDefinition MinWidth="228" Width="*"/>
+                <ColumnDefinition MinWidth="228" Width="*"/>
+                <ColumnDefinition MinWidth="228" Width="*"/>
+                <ColumnDefinition MinWidth="228" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="#FF00E266"  Margin="75,15,75,30"  Grid.Column="0"/>
+            <Viewbox Stretch="Uniform" Grid.Column="0" >
+                <TextBlock x:Name="textBlock" Margin="50,55,50,10" Foreground="Black"  TextAlignment="Center" TextWrapping="Wrap" Text="VACANT" FontWeight="ExtraBold" FontSize="14"  />
+            </Viewbox>
+            
+            <Rectangle Fill="Red"  Margin="75,15,75,30"  Grid.Column="1"/>
+            <Viewbox Stretch="Uniform" Grid.Column="1">
+                <TextBlock x:Name="textBlock1"  Margin="50,55,50,10" TextAlignment="Center" TextWrapping="Wrap" Text="OCCUPIED" FontWeight="ExtraBold" FontSize="14"  />
+            </Viewbox>
+            
+            <Rectangle Fill="#FFFABF8F"  Margin="75,15,75,30"  Grid.Column="2"/>
+            <Viewbox Stretch="Uniform" Grid.Column="2">
+                <TextBlock x:Name="textBlock2"  Margin="50,55,50,10" TextAlignment="Center" TextWrapping="Wrap" Text="DIRTY" FontWeight="ExtraBold" FontSize="14" Grid.Column="2"/>
+            </Viewbox>
+            
+            <Rectangle Fill="Black"  Margin="75,15,75,30"  Grid.Column="3"/>
+            <Viewbox Stretch="Uniform" Grid.Column="3">
+                <TextBlock x:Name="textBlock3"  Margin="50,55,50,10" TextAlignment="Center" TextWrapping="Wrap" Text="BLOCKED" FontWeight="ExtraBold" FontSize="14" Grid.Column="3"/>
+            </Viewbox>
+            
+            <Rectangle Fill="#FF0070C0"  Margin="75,15,75,30"  Grid.Column="4"/>
+            <Viewbox Stretch="Uniform" Grid.Column="4">
+                <TextBlock x:Name="textBlock4"  Margin="50,55,50,10" TextAlignment="Center" TextWrapping="Wrap" Text="BOOKED" FontWeight="ExtraBold" FontSize="14" Grid.Column="4"/>
+            </Viewbox>
+           
+            <Button x:Name="backbut" Content="" HorizontalAlignment="Left" Height="51" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="backbut_Click" Grid.Column="0">
+                <Button.Background>
+                    <ImageBrush ImageSource="arrow-left-bold-circle.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="30" Background="#FFE0DFD0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="1" Height="*"/>
+                <RowDefinition MinHeight="1" Height="*"/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="r101" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="0"/>
+            <TextBlock x:Name="textBlock6"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="101" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="0" />
+            <Rectangle x:Name="r102" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="1"/>
+            <TextBlock x:Name="textBlock7"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="102" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="1" />
+            <Rectangle x:Name="r103" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="2"/>
+            <TextBlock x:Name="textBlock8"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="103" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="2" />
+            <Rectangle x:Name="r104" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="3"/>
+            <TextBlock x:Name="textBlock9"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="104" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="3" />
+            <Rectangle x:Name="r105" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="4"/>
+            <TextBlock x:Name="textBlock10"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="105" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="4" />
+            <Rectangle x:Name="r106" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="5"/>
+            <TextBlock x:Name="textBlock11"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="106" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="5" />
+            <Rectangle x:Name="r107" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="6"/>
+            <TextBlock x:Name="textBlock12"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="107" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="6" />
+            <Rectangle x:Name="r108" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="7"/>
+            <TextBlock x:Name="textBlock13"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="108" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="7" />
+            <Rectangle x:Name="r109" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="0"/>
+            <TextBlock x:Name="textBlock14"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="109" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="0" />
+            <Rectangle x:Name="r110" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="1"/>
+            <TextBlock x:Name="textBlock15"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="110" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="1" />
+            <Rectangle x:Name="r111" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="2"/>
+            <TextBlock x:Name="textBlock16"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="111" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="2" />
+        </Grid>
+        <Grid Grid.Row="2" Margin="30" Background="#FFF1EA7F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+                <ColumnDefinition MinWidth="1" Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="1" Height="*"/>
+                <RowDefinition MinHeight="1" Height="*"/>
+            </Grid.RowDefinitions>
+            <Rectangle x:Name="r201" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="0"/>
+            <TextBlock x:Name="textBlock17"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="201" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="0" />
+            <Rectangle x:Name="r202" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="1"/>
+            <TextBlock x:Name="textBlock18"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="202" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="1" />
+            <Rectangle x:Name="r203" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="2"/>
+            <TextBlock x:Name="textBlock19"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="203" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="2" />
+            <Rectangle x:Name="r204" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="3"/>
+            <TextBlock x:Name="textBlock20"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="204" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="3" />
+            <Rectangle x:Name="r205" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="4"/>
+            <TextBlock x:Name="textBlock21"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="205" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="4" />
+            <Rectangle x:Name="r206" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="5"/>
+            <TextBlock x:Name="textBlock122"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="206" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="5" />
+            <Rectangle x:Name="r207" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="6"/>
+            <TextBlock x:Name="textBlock123"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="207" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="6" />
+            <Rectangle x:Name="r208" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="0" Grid.Column="7"/>
+            <TextBlock x:Name="textBlock124"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="208" FontWeight="ExtraBold" FontSize="14" Grid.Row="0" Grid.Column="7" />
+            <Rectangle x:Name="r209" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="0"/>
+            <TextBlock x:Name="textBlock25"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="209" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="0" />
+            <Rectangle x:Name="r210" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="1"/>
+            <TextBlock x:Name="textBlock26"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="210" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="1" />
+            <Rectangle x:Name="r211" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="2"/>
+            <TextBlock x:Name="textBlock27"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="211" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="2" />
+            <Rectangle x:Name="r212" Fill="#FFF4F4F5"  Margin="20"  Grid.Row="1" Grid.Column="3"/>
+            <TextBlock x:Name="textBlock28"  Margin="20,30" TextAlignment="Center" TextWrapping="Wrap" Text="212" FontWeight="ExtraBold" FontSize="14" Grid.Row="1" Grid.Column="3" />
+        </Grid>
+
+
+    </Grid>
+</Page>

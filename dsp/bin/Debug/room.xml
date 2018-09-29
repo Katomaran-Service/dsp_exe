@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ROOM>
+  <ROOM_NAME rname="Romantic Duo Dwell">
+    <RNO id="0">101</RNO>
+    <RNO id="0">102</RNO>
+    <RNO id="1">103</RNO>
+    <RNO id="1">104</RNO>
+    <RNO id="1">105</RNO>
+    <RNO id="1">106</RNO>
+    <RNO id="1">110</RNO>
+    <RNO id="1">201</RNO>
+    <RNO id="1">202</RNO>
+    <RNO id="1">203</RNO>
+    <RNO id="1">204</RNO>
+    <RNO id="1">205</RNO>
+    <RNO id="1">206</RNO>
+    <RNO id="1">210</RNO>
+    <RNO id="1">211</RNO>
+  </ROOM_NAME>
+  <ROOM_NAME rname="Quadratic Duplet chamber">
+    <RNO id="1">108</RNO>
+    <RNO id="1">111</RNO>
+    <RNO id="1">208</RNO>
+    <RNO id="1">209</RNO>
+    <RNO id="1">212</RNO>
+  </ROOM_NAME>
+  <ROOM_NAME rname="Nuclear Area">
+    <RNO id="1">107</RNO>
+    <RNO id="1">207</RNO>
+  </ROOM_NAME>
+  <ROOM_NAME rname="Star Lounge">
+    <RNO id="1">109</RNO>
+  </ROOM_NAME>
+</ROOM>

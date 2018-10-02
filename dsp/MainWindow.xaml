@@ -139,7 +139,7 @@
             <Grid HorizontalAlignment="Left" Margin="59.886,0,0,0" Width="112.048" Background="Black"/>
             <Image x:Name="image" HorizontalAlignment="Left" Margin="59.764,-0.226,0,0" Width="111.832" Source="dream-logo.png"/>
             <Button x:Name="LOGOUT_BUT" Content="Button" HorizontalAlignment="Right" Height="31.999" Margin="0,10,255.034,0" VerticalAlignment="Top" Width="118.587" Template="{DynamicResource logout}" RenderTransformOrigin="0.81,0.335" Click="logout"/>
-            <TextBlock x:Name="username_txt" HorizontalAlignment="Right" Margin="0,0,16.064,0" TextWrapping="Wrap" Width="475.913" FontSize="25" Background="Black" Foreground="White" Text="Hello, " Height="40.754" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="username_txt" HorizontalAlignment="Right" Margin="0,0,0,0" TextWrapping="Wrap" Width="300" FontSize="25" Background="Black" Foreground="White" Text="Hello, " Height="40.754" VerticalAlignment="Bottom"/>
             <Button x:Name="close" Content="Button" HorizontalAlignment="Right" Height="31.999" Margin="0,10,16.064,0" VerticalAlignment="Top" Width="60.234" Template="{DynamicResource close}" Click="close_window"/>
             <Button x:Name="maxi_but" Content="Button" HorizontalAlignment="Right" Height="32" Margin="0,10,76,0" VerticalAlignment="Top" Width="61" Template="{DynamicResource max}" Click="maxi_but_Click"/>
             <Button x:Name="restore_but" Content="Button" HorizontalAlignment="Right" Height="32" Margin="0,10,76,0" VerticalAlignment="Top" Width="61" Template="{DynamicResource re}" Click="restore_but_Click" Visibility="Collapsed"/>

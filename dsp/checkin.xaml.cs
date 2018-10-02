@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
-using System.Reflection;
 using System.Collections.ObjectModel;
-using Newtonsoft.Json;
 using static dsp.structdata;
+using BespokeFusion;
+using System.Text;
 
 namespace dsp
 {
@@ -672,8 +664,21 @@ namespace dsp
             dynamic list = roomgrid.SelectedItems[0];
             if (list.but_stat=="0")
             {
-                MessageBoxResult mb = MessageBox.Show("are you sure?", "Delete room", MessageBoxButton.YesNo);
-                if (mb == MessageBoxResult.Yes)
+                var msg = new CustomMaterialMessageBox
+                {
+                    TxtMessage = { Text = "are you sure ? ", Foreground = Brushes.Black },
+                    TxtTitle = { Text = "DELETE ROOM", Foreground = Brushes.Black },
+                    BtnOk = { Content = "Yes" },
+                    BtnCancel = { Content = "No" },
+                    // MainContentControl = { Background = Brushes.MediumVioletRed },
+                    TitleBackgroundPanel = { Background = Brushes.Yellow },
+
+                    BorderBrush = Brushes.Yellow
+                };
+
+                msg.Show();
+                var results = msg.Result;
+                if (results == MessageBoxResult.OK)
                 {
 
                     ramttotal -= Convert.ToInt32(list.AMOUNT);
@@ -890,7 +895,7 @@ namespace dsp
         {
             if ((info_ph1.Text == "PHONE NUMBER") || (info_name1.Text == "NAME") || (info_str1.Text == "STREET ADDRESS") || (info_dist1.Text == "DISTRICT NAME") || (info_state1.Text == "STATE NAME") || (info_country1.Text == "COUNTRY NAME") || (info_pincode1.Text == "PIN CODE") || (info_id_num1.Text == "ID NUMBER") || ((info_idproof.SelectedItem == null) && (info_other_id1.Text == "OTHERS")) || (info_dob.SelectedDate == null)||(info_segment.Text=="")||(info_mode.Text=="")||(info_tid.Text=="TRANSACTION ID")||(info_ramount.Text=="ROOM AMOUNT"))
             {
-                MessageBox.Show("EMPTY CREDENTIALS");
+                MaterialMessageBox.ShowError(@"Empty credential");
 
             }
             else
@@ -955,6 +960,7 @@ namespace dsp
                     if (success)
                     {
                         MessageBox.Show("CUSTOMER ADDED");
+                        dbhandler.sms_sender("Welcome to DREAM STAR PARADISE\nYOUR REGISTRATION IS SUCCESSFUL",basic.cc+basic.phonenumber);
                         add_db_room();
                         
                     }
@@ -968,6 +974,7 @@ namespace dsp
         }
         void add_db_room()
         {
+            StringBuilder room1 = new StringBuilder();
             if (Items.Count > 0)
             {
                 check_in_struct checkin = new check_in_struct();
@@ -1016,19 +1023,25 @@ namespace dsp
                     checkin.transaction = info_tid.Text;
 
                     checkin.kot_amount = "0";
+                    checkin.kot_paid = "false";
                     checkin.nc_kot_count = "0";
                     checkin.plan = info_plan.Text;
                     checkin.post_charges = "0";
+                    checkin.post_paid = "false";
                     checkin.Invoice_number = "0";
+                    checkin.room_paid = "false";
                     checkin.check_out = "0";
                     bool suc = dbhandler.Checkin(checkin);
                     bool suc1 = dbhandler.room_status_update(room);
                     if (suc)
                     {
                         MessageBox.Show(list2.ROOMNO + " checked in");
-
+                        room1.Append(list2.ROOMNO+",");
                     }
+                    
                 }
+                if (room1.Length != 0)
+                    dbhandler.sms_sender("DREAM STAR PARADISE\nROOMS CHECKED IN:" + room1, checkin.phonenumber);
 
 
             }
@@ -1100,8 +1113,21 @@ namespace dsp
                 check checkin = dbhandler.checkifPhonenumberavailable(cc1.Text, info_ph1.Text);
                 if (checkin.available)
                 {
-                    MessageBoxResult result = MessageBox.Show("Phone number already exist\nDo you want to load?", "CUSTOMER DETAILS", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
+                    var msg = new CustomMaterialMessageBox
+                    {
+                        TxtMessage = { Text = "Phone number already exist\nDo you want to load?", Foreground = Brushes.Black },
+                        TxtTitle = { Text = "CUSTOMER DETAILS", Foreground = Brushes.Black },
+                        BtnOk = { Content = "Yes" },
+                        BtnCancel = { Content = "No" },
+                       // MainContentControl = { Background = Brushes.MediumVioletRed },
+                        TitleBackgroundPanel = { Background = Brushes.Yellow },
+
+                        BorderBrush = Brushes.Yellow
+                    };
+
+                    msg.Show();
+                    var results = msg.Result;
+                    if (results==MessageBoxResult.OK)
                     {
                         phone_state.Text = "*existing customer";
                         phone_state.Foreground = new SolidColorBrush(Colors.Green);
@@ -1231,10 +1257,7 @@ namespace dsp
         {
             if(info_ph1.Text!="PHONE NUMBER")
             {
-                if (e.Key == Key.Back)
-                {
-                    MessageBox.Show("HEY");
-                }
+                
 
             }
         }

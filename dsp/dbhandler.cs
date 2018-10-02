@@ -1,13 +1,16 @@
-﻿using System;
+﻿using BespokeFusion;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml;
 using static dsp.structdata;
 
@@ -17,6 +20,7 @@ namespace dsp
     {
         public static string name;
         static string _databaseconnectionString = string.Empty;
+        static string _databaseconnectionString1 = string.Empty;
         static string _logfilepath = string.Empty;
         public static string _idproof = string.Empty;
         static string _tablename = string.Empty;
@@ -45,6 +49,12 @@ namespace dsp
             get { return _databaseconnectionString; }
 
             set { _databaseconnectionString = value; }
+        }
+        public static string DatabaseConnectionString1
+        {
+            get { return _databaseconnectionString1; }
+
+            set { _databaseconnectionString1 = value; }
         }
         public static string Purchase_order_folder
         {
@@ -170,8 +180,12 @@ namespace dsp
         {
             configload();
             conn = new SqlConnection(_databaseconnectionString);
-
+            if (!checkdb())
+            {
+                generatedb();
+            }
         }
+       
         public void configload()
         {
             try
@@ -180,6 +194,7 @@ namespace dsp
                 map.ExeConfigFilename = AppDomain.CurrentDomain.BaseDirectory + "fileConfig.xml";
                 Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
                 DatabaseConnectionString = config.AppSettings.Settings["DBConnectionString"].Value;
+               // DatabaseConnectionString1= config.AppSettings.Settings["DBString"].Value;
                 //LogFilePath = config.AppSettings.Settings["LogFilePath"].Value;
                 Id_proofs = config.AppSettings.Settings["ID_Proofs"].Value;
                 SourceOfBooking = config.AppSettings.Settings["Source_of_booking"].Value;
@@ -196,11 +211,71 @@ namespace dsp
                 Date = config.AppSettings.Settings["date"].Value;
                 Segment= config.AppSettings.Settings["segment"].Value;
                 Mode = config.AppSettings.Settings["mode"].Value;
-
+               
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "configure");
+            }
+        }
+        Boolean checkdb()
+        {
+            try
+            {
+                conn.Open();
+                if(conn.State==ConnectionState.Open)
+                    conn.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+                
+        }
+        void generatedb()
+        {
+            List<string> cmds = new List<string>();
+            if (File.Exists("dsp_database.sql"))
+            {
+                TextReader tr = new StreamReader("dsp_database.sql");
+                string line = "";
+                string cmd = "";
+                while ((line = tr.ReadLine()) != null)
+                {
+                    if (line.Trim().ToUpper() == "GO")
+                    {
+                        cmds.Add(cmd);
+                        cmd = String.Empty;
+                    }
+                    else
+                    {
+                        cmd += line + "\r\n";
+                    }
+                }
+                if(cmd.Length>0)
+                {
+                    cmds.Add(cmd);
+                    cmd = string.Empty;
+                }
+                tr.Close();
+
+            }
+            if (cmds.Count > 0)
+            {
+                SqlCommand sql = new SqlCommand();
+                sql.Connection = new SqlConnection(@"Data Source = localhost\SQLEXPRESS; Initial Catalog = MASTER; Integrated Security = True");
+                sql.CommandType = CommandType.Text;
+                if (sql.Connection.State == ConnectionState.Closed)
+                {
+                    sql.Connection.Open();
+                    for(int i = 0; i < cmds.Count; i++)
+                    {
+                        sql.CommandText = cmds[i];
+                        sql.ExecuteNonQuery();
+                    }
+                    sql.Connection.Close();
+                }
             }
         }
         public static void datedel()
@@ -504,7 +579,7 @@ namespace dsp
         }
         public static Boolean Checkin(check_in_struct customer)
         {
-            string sqlCheckinQuery = String.Format("INSERT INTO [checkin](phonenumber,checkin_date,checkin_time,checkin_out_date,checkin_out_time,referral,hotel_name,room_type,room_no,p_plan,person_count,kot_amount,advance_paid,room_amt,post_charges,discount,transaction_no,invoice,checkout,nc_kot,room_group,advance_used,total_amount)VALUES(@PHONENUMBER, @CHECKIN_DATE, @CHECKIN_TIME, @CHECKIN_OUT_DATE, @CHECKIN_OUT_TIME, @REFERRAL,@HOTEL_NAME, @ROOM_TYPE,@ROOM_NO, @PLAN, @PERSON_COUNT, @KOT_AMOUNT, @ADVANCE_PAID, @ROOMAMT,@P_CHARGE,@DISCOUNT,@TRANSACTION,@INVOICE,@CHECKOUT,@NCKOT,@ROOMGRP,@AUSED,@TT)");
+            string sqlCheckinQuery = String.Format("INSERT INTO [checkin](phonenumber,checkin_date,checkin_time,checkin_out_date,checkin_out_time,referral,hotel_name,room_type,room_no,p_plan,person_count,kot_amount,advance_paid,room_amt,post_charges,discount,transaction_no,invoice,checkout,nc_kot,room_group,advance_used,total_amount,kot_paid,post_paid,room_paid)VALUES(@PHONENUMBER, @CHECKIN_DATE, @CHECKIN_TIME, @CHECKIN_OUT_DATE, @CHECKIN_OUT_TIME, @REFERRAL,@HOTEL_NAME, @ROOM_TYPE,@ROOM_NO, @PLAN, @PERSON_COUNT, @KOT_AMOUNT, @ADVANCE_PAID, @ROOMAMT,@P_CHARGE,@DISCOUNT,@TRANSACTION,@INVOICE,@CHECKOUT,@NCKOT,@ROOMGRP,@AUSED,@TT,@KOTP,@POSTP,@ROOMP)");
             try
             {
                 if (conn.State == System.Data.ConnectionState.Closed)
@@ -535,6 +610,9 @@ namespace dsp
                         command.Parameters.AddWithValue("@ROOMGRP", customer.room_group);
                         command.Parameters.AddWithValue("@AUSED", customer.advance_used);
                         command.Parameters.AddWithValue("@TT", customer.total_amt);
+                        command.Parameters.AddWithValue("@KOTP", customer.kot_paid);
+                        command.Parameters.AddWithValue("@POSTP", customer.post_paid);
+                        command.Parameters.AddWithValue("@ROOMP", customer.room_paid);
                         command.ExecuteNonQuery();
                         conn.Close();
                         return true;
@@ -1443,6 +1521,7 @@ namespace dsp
         }
         public static void roomxml()
         {
+            SqlConnection conn1 = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = \"database\\dsp_database.mdf\";Integrated Security=True");
             string sqlroom = String.Format(@"select * from [room_status] where status!='1' order by checkin_date,checkin_time");
             String room = String.Empty;
             String status = String.Empty;
@@ -1549,6 +1628,78 @@ namespace dsp
             string room_y = String.Format(@"select count(*) from [checkin] where convert(datetime2,checkin_date)>=DATEADD(YEAR, -1, GETDATE()) order by checkin_date,checkin_time");
             string roomrev_d = String.Format(@"select sum(cast([total))");
 
+        }
+        public static void sms_sender(string msg, string ph)
+        {
+            //Your authentication key
+            string authKey = "240593AtbMGRnjdoz5bb300dd";
+            //Multiple mobiles numbers separated by comma
+            string mobileNumber = ph;
+            //Sender ID,While using route4 sender id should be 6 characters long.
+            string senderId = "HP-DSP";
+            //Your message to send, Add URL encoding here.
+            string message = System.Uri.EscapeDataString(msg);
+
+            //Prepare you post parameters
+            StringBuilder sbPostData = new StringBuilder();
+            sbPostData.AppendFormat("authkey={0}", authKey);
+            sbPostData.AppendFormat("&mobiles={0}", mobileNumber);
+            sbPostData.AppendFormat("&message={0}", message);
+            sbPostData.AppendFormat("&sender={0}", senderId);
+            sbPostData.AppendFormat("&route={0}", "default");
+
+            try
+            {
+                //Call Send SMS API
+                string sendSMSUri = "http://api.msg91.com/api/sendhttp.php";
+                //Create HTTPWebrequest
+                HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(sendSMSUri);
+                //Prepare and Add URL Encoded data
+                UTF8Encoding encoding = new UTF8Encoding();
+                byte[] data = encoding.GetBytes(sbPostData.ToString());
+                //Specify post method
+                httpWReq.Method = "POST";
+                httpWReq.ContentType = "application/x-www-form-urlencoded";
+                httpWReq.ContentLength = data.Length;
+                using (Stream stream = httpWReq.GetRequestStream())
+                {
+                    stream.Write(data, 0, data.Length);
+                }
+                //Get the response
+                HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+                //Close the response
+                reader.Close();
+                response.Close();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+        public static MessageBoxResult msgbox(string txt,string title,string c1,string c2,bool c2_st)
+        {
+            var vis = Visibility.Visible;
+            if (!c2_st)
+            {
+                vis = Visibility.Hidden;
+            }
+            var msg = new CustomMaterialMessageBox
+            {
+                TxtMessage = { Text = txt, Foreground = Brushes.Black },
+                TxtTitle = { Text = title, Foreground = Brushes.Black },
+                BtnOk = { Content = c1 },
+                BtnCancel = { Content = c2,Visibility=vis },
+                // MainContentControl = { Background = Brushes.MediumVioletRed },
+                TitleBackgroundPanel = { Background = Brushes.Yellow },
+
+                BorderBrush = Brushes.Yellow
+            };
+
+            msg.Show();
+            var results = msg.Result;
+            return results;
         }
 
     }

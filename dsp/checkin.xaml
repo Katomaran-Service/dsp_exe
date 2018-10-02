@@ -231,19 +231,7 @@
                     </DataGrid.Columns>
 
                 </DataGrid>
-                <!-- <ListView x:Name="room_list_con" HorizontalAlignment="Left" Height="210" Margin="640,1024,0,0" VerticalAlignment="Top" Width="792" SelectionChanged="room_list_con_SelectionChanged">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn  Header="STATUS" Width="100" DisplayMemberBinding="{Binding STATUS}"/>
-                            <GridViewColumn  Header="ROOM TYPE" Width="200" DisplayMemberBinding="{Binding ROOMTYPE}"/>
-                            <GridViewColumn  Header="ROOM NO" Width="100" DisplayMemberBinding="{Binding ROOMNO}"/>
-                            <GridViewColumn  Header="CHECK IN" Width="150" DisplayMemberBinding="{Binding CHECKIN1}"/>
-                            <GridViewColumn  Header="CHECK OUT" Width="150" DisplayMemberBinding="{Binding CHECKOUT1}"/>
-                            <GridViewColumn  Header="COUNT" Width="80" DisplayMemberBinding="{Binding COUNT}"/>
-                            <GridViewColumn  Header="AMOUNT" Width="100" DisplayMemberBinding="{Binding AMOUNT}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>-->
+               
                 <Image x:Name="image_Copy1" HorizontalAlignment="Left" Height="55" Margin="40,1163,0,0" VerticalAlignment="Top" Width="57" Source="icons8-bedroom-filled-50.png"/>
                 <ComboBox x:Name="room_type" HorizontalAlignment="Left" Height="37" Margin="107,1181,0,0" VerticalAlignment="Top" Width="187" SelectionChanged="rtype_SelectionChanged"/>
                 <Image x:Name="image_Copy2" HorizontalAlignment="Left" Height="55" Margin="346,1163,0,0" VerticalAlignment="Top" Width="57" Source="icons8-room-52.png"/>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\App.xaml
-12267231565
+151883507125
 
-231370064382
-18-1449598910
-checkin.xaml;checkout.xaml;front_desk.xaml;hk.xaml;home.xaml;login.xaml;MainWindow.xaml;main_pg.xaml;occupancy.xaml;room_block_pg.xaml;startupscreen.xaml;update_customer.xaml;
+26-825224773
+22-1835963811
+checkin.xaml;checkout.xaml;clean_room.xaml;front_desk.xaml;hk.xaml;hlog.xaml;home.xaml;login.xaml;MainWindow.xaml;main_pg.xaml;occupancy.xaml;room_block_pg.xaml;room_release.xaml;startupscreen.xaml;update_customer.xaml;
 
-True
+False
 

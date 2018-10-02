@@ -32,6 +32,7 @@ namespace dsp
 
         private void occupancy_but_Click(object sender, RoutedEventArgs e)
         {
+            occupancy.url = "/front_desk.xaml";
             NavigationService.Navigate(new Uri("/occupancy.xaml", UriKind.RelativeOrAbsolute));
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BespokeFusion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -333,7 +334,7 @@ namespace dsp
                     }
                     else
                     {
-                        MessageBox.Show("customer doesn't exist");
+                        MaterialMessageBox.ShowError(@"customer doesn't exist");
                     }
                 }
             }

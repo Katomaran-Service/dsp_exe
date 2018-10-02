@@ -21,16 +21,17 @@ namespace dsp
     /// </summary>
     public partial class occupancy : Page
     {
+        public static string url = String.Empty;
         public occupancy()
         {
             InitializeComponent();
-            
 
+            
         }
 
         private void backbut_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/front_desk.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri(url, UriKind.RelativeOrAbsolute));
         }
         public void color_load()
         {

@@ -27,22 +27,23 @@ namespace dsp
 
         private void room_block_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/room_block_pg.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void room_clean_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/clean_room.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void room_release_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/room_release.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void occupancy_but_Click(object sender, RoutedEventArgs e)
         {
-
+            occupancy.url = "/hk.xaml";
+            NavigationService.Navigate(new Uri("/occupancy.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void laundry_but_Click(object sender, RoutedEventArgs e)

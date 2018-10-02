@@ -63,6 +63,7 @@ namespace dsp
             store_list.Background = new SolidColorBrush(Colors.Transparent);
             report_list.Background = new SolidColorBrush(Colors.Transparent);
             admin_list.Background = new SolidColorBrush(Colors.Transparent);
+            
         }
 
         private void hk_Click(object sender, RoutedEventArgs e)
@@ -74,6 +75,7 @@ namespace dsp
             store_list.Background = new SolidColorBrush(Colors.Transparent);
             report_list.Background = new SolidColorBrush(Colors.Transparent);
             admin_list.Background = new SolidColorBrush(Colors.Transparent);
+            sub_frame.Content = new hk();
         }
 
         private void store_Click(object sender, RoutedEventArgs e)

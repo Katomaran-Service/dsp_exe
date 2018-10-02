@@ -41,3 +41,15 @@ C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\hk.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\room_block_pg.g.cs
 C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\hk.baml
 C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\room_block_pg.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\ControlzEx.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\ControlzEx.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\MaterialDesignColors.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\BespokeFusion.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\MahApps.Metro.dll
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\MahApps.Metro.pdb
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\bin\Debug\MahApps.Metro.xml
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\clean_room.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\clean_room.baml
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\room_release.g.cs
+C:\Users\user\Documents\Visual Studio 2015\Projects\dsp\dsp\obj\Debug\room_release.baml

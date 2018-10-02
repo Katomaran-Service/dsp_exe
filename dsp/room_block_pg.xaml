@@ -3,18 +3,49 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:dsp"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1550"
+      d:DesignHeight="700" d:DesignWidth="1550"
       Height="Auto" Width="auto"
       Title="room_block_pg">
+    <Page.Resources>
+        <ControlTemplate x:Key="BLOCKR" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="Black" RadiusY="37.034" RadiusX="37.034" Stroke="Black"/>
+                <Label x:Name="label" Content="BLOCK" Margin="33,8,27,10" Foreground="White" FontSize="20"/>
+            </Grid>
+        </ControlTemplate>
+    </Page.Resources>
 
     <Grid Background="#FFF0EDC4">
+        <Rectangle Fill="Gray" Margin="0"/>
         <Button x:Name="backbut" Content="" HorizontalAlignment="Left" Height="51" Margin="26,0,0,0" VerticalAlignment="Top" Width="67" BorderBrush="{x:Null}" Click="backbut_Click">
             <Button.Background>
                 <ImageBrush ImageSource="arrow-left-bold-circle.png"/>
             </Button.Background>
         </Button>
-        
+        <Viewbox Stretch="Uniform" Margin="692,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="31" Width="160">
+            <TextBlock x:Name="textBlock123"  TextAlignment="Center" TextWrapping="Wrap" Text="ROOM BLOCK" FontWeight="Bold"  Width="Auto"  FontSize="20"/>
+        </Viewbox>
+        <ScrollViewer HorizontalAlignment="Stretch" Margin="0,51,0,0"  Background="#fff0edc4" HorizontalScrollBarVisibility="Auto">
+            <Grid Background="#fff0edc4" Margin="0,0,0,0"  MinWidth="1450" Height="Auto" Width="Auto">
+                <ComboBox x:Name="rtype" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="301" Margin="350,60,0,0" SelectionChanged="rtype_SelectionChanged" FontSize="20"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="150,60,0,0" TextWrapping="Wrap" Text="ROOM NO:" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+                <TextBox x:Name="block_remark" HorizontalAlignment="Left" Height="55" Margin="350,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="301" FontSize="20"/>
+                <ComboBox x:Name="room_no" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="150" Margin="350,170,0,0" FontSize="20"/>
+                <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="904,147,0,0" TextWrapping="Wrap" Text="TIME" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+                <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="885,60,0,0" TextWrapping="Wrap" Text="BLOCK DATE" VerticalAlignment="Top" Width="154" FontWeight="Bold"/>
+                <DatePicker x:Name="blockdate" HorizontalAlignment="Left" Height="45" Margin="1085,60,0,0" VerticalAlignment="Top" Width="225" DisplayDateStart="{x:Static sys:DateTime.Now}" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateFormat="Short" FontSize="20" SelectedDateChanged="blockdate_SelectedDateChanged"/>
+                <ComboBox x:Name="block_time" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="150" Margin="1085,147,0,0" FontSize="20"/>
+                <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="865,223,0,0" TextWrapping="Wrap" Text="RELEASE DATE"  VerticalAlignment="Top" Width="174" FontWeight="Bold"/>
+                <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="904,330,0,0" TextWrapping="Wrap" Text="TIME" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+                <DatePicker x:Name="releasedate" HorizontalAlignment="Left" Height="45" Margin="1085,223,0,0" VerticalAlignment="Top" Width="225" DisplayDateStart="{x:Static sys:DateTime.Now}" FontSize="20"/>
+                <ComboBox x:Name="release_time" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="150" Margin="1085,330,0,0" FontSize="20"/>
+                <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" FontSize="25" TextAlignment="Right" Height="45" Margin="150,330,0,0" TextWrapping="Wrap" Text="REMARK:" VerticalAlignment="Top" Width="135" FontWeight="Bold"/>
+                <Button x:Name="block_but" Content="Button" HorizontalAlignment="Left" Height="65" Margin="722,491,0,0" VerticalAlignment="Top" Width="136" Template="{DynamicResource BLOCKR}"  Click="block_but_Click"/>
+
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

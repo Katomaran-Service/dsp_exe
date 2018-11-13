@@ -233,6 +233,7 @@
             <ColumnDefinition Width="384*"/>
             <ColumnDefinition Width="384*"/>
             <ColumnDefinition Width="384*"/>
+            <ColumnDefinition Width="384*"/>
         </Grid.ColumnDefinitions>
         <Viewbox Stretch="Uniform" Margin="10,50" Grid.ColumnSpan="3" Grid.RowSpan="2" >
             <Image x:Name="image" HorizontalAlignment="Stretch" MinHeight="448" Height="Auto" VerticalAlignment="Stretch" MinWidth="1150" Width="Auto" Source="line.png" Margin="0,90,0,0"/>
@@ -284,7 +285,7 @@
                 </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="0">
+        <Viewbox Stretch="Uniform" Grid.Row="0" Grid.Column="3">
             <Button x:Name="pc_but" Content="" HorizontalAlignment="Stretch" MinHeight="100" Height="auto" Margin="100" VerticalAlignment="Stretch" MinWidth="120" Width="Auto" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" >
                 <Button.RenderTransform>
                     <TransformGroup>
@@ -299,7 +300,7 @@
                 </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="0">
             <Button x:Name="update_but" Content="" HorizontalAlignment="Stretch"  MinHeight="100" Margin="100" VerticalAlignment="Stretch" MinWidth="120" Width="Auto" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5"  Height="auto" Click="update_but_Click">
                 <Button.RenderTransform>
                     <TransformGroup>
@@ -314,7 +315,7 @@
                 </Button.Background>
             </Button>
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="2">
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
             <Button x:Name="cancel_book_but" HorizontalAlignment="Stretch" Height="Auto" MinHeight="100" Margin="100" VerticalAlignment="Stretch" MinWidth="120" Width="Auto" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" >
                 <Button.RenderTransform>
                     <TransformGroup>
@@ -329,6 +330,21 @@
                 </Button.Background>
             </Button>
         </Viewbox>
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="2">
+            <Button x:Name="flog_but" HorizontalAlignment="Stretch" Height="Auto" MinHeight="100" Margin="100" VerticalAlignment="Stretch" MinWidth="120" Width="Auto" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Click="flog_but_Click" >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Background>
+                    <ImageBrush ImageSource="icons8-edit-property-filled-100.png"/>
+                </Button.Background>
+            </Button>
+        </Viewbox>
         <Viewbox Stretch="Uniform" Grid.Row="0" Grid.Column="0">
             <Label x:Name="label" Content="CHECK IN" HorizontalAlignment="Stretch" MinHeight="44" Height="auto" Margin="150,180,150,10" VerticalAlignment="Stretch" MinWidth="108" Width="auto" FontWeight="ExtraBold" FontSize="20"/>
         </Viewbox>
@@ -338,15 +354,18 @@
         <Viewbox Stretch="Uniform" Grid.Row="0" Grid.Column="2">
             <Label x:Name="label_Copy1" Content="OCCUPANCY" HorizontalAlignment="Stretch" MinHeight="44" Height="Auto" Margin="150,180,150,10" VerticalAlignment="Stretch" MinWidth="138" Width="Auto" FontWeight="ExtraBold" FontSize="20" />
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="0">
+        <Viewbox Stretch="Uniform" Grid.Row="0" Grid.Column="3">
             <Label x:Name="label_Copy2" Content="POST CHARGE" HorizontalAlignment="Stretch" MinHeight="44" Height="Auto" Margin="150,180,150,10" VerticalAlignment="Stretch" MinWidth="148" Width="Auto" FontWeight="ExtraBold" FontSize="20" />
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="0">
             <Label x:Name="label_Copy3" Content="UPDATE CUSTOMER" HorizontalAlignment="Stretch"  MinHeight="44" Height="Auto" Margin="130,180,130,10" VerticalAlignment="Stretch" FontWeight="ExtraBold" FontSize="20" MinWidth="148" Width="Auto" />
         </Viewbox>
-        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="2">
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="1">
             <Label x:Name="label_Copy4" Content="CANCEL BOOKING" HorizontalAlignment="Stretch" MinHeight="44" Height="Auto" Margin="130,180,130,10" VerticalAlignment="Stretch" MinWidth="196" Width="Auto" FontWeight="ExtraBold" FontSize="20" />
         </Viewbox>
-        
+        <Viewbox Stretch="Uniform" Grid.Row="1" Grid.Column="2">
+            <TextBlock x:Name="label_Copy5" TextAlignment="Center" Text="LOG" HorizontalAlignment="Stretch" MinHeight="44" Height="Auto" Margin="130,180,130,10" VerticalAlignment="Stretch" MinWidth="196" Width="Auto" FontWeight="ExtraBold" FontSize="20" />
+        </Viewbox>
+
     </Grid>
 </Page>

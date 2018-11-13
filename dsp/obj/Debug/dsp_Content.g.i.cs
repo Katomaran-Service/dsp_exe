@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/dsp_database.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/dsp_database_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("icons8-import-filled-100.png")]
 
 

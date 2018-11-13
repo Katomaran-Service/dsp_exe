@@ -26,36 +26,7 @@ namespace dsp
         public room_release()
         {
             InitializeComponent();
-            for (int i = DateTime.Now.Hour; i < 24; i++)
-                release_time.Items.Add(i);
-            release_time.Text = DateTime.Now.TimeOfDay.Hours.ToString();
-            XmlDocument doc = new XmlDocument();
-            doc.Load("hotel_tariff.xml");
-            XmlNode node = doc.DocumentElement;
-
-            try
-            {
-                foreach (XmlNode pnode in node)
-                {
-                    if (pnode.Attributes[0].InnerText == "LE CASTLE")
-                    {
-
-                        XmlNodeList child = pnode.ChildNodes;
-                        foreach (XmlNode room in child)
-                        {
-                            if (room.Attributes[0].Name == "r_name")
-                            {
-                                rtype.Items.Add(room.Attributes[0].InnerText);
-
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception m)
-            {
-                MessageBox.Show(m.Message);
-            }
+            clear();
         }
 
         private void release_but_Click(object sender, RoutedEventArgs e)
@@ -81,11 +52,14 @@ namespace dsp
                 {
                     case true:
                         dbhandler.msgbox("ROOM:\n" + room_no.Text + "\nRELEASED AND MOVED TO VACANT STATE", "ROOM RELEASED", "Ok", "", false);
+                        clear();
                         break;
                     case false:
                         MaterialMessageBox.ShowError("ROOM:\n" + room_no.Text + "\nNOT RELEASED");
+                        clear();
                         break;
                 }
+                
             }
             else
             {
@@ -131,6 +105,43 @@ namespace dsp
         private void backbut_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/hk.xaml", UriKind.RelativeOrAbsolute));
+        }
+        public void clear()
+        {
+            
+            release_time.Items.Clear();
+            room_no.Items.Clear();
+            rtype.Items.Clear();
+            for (int i = DateTime.Now.Hour; i < 24; i++)
+                release_time.Items.Add(i);
+            release_time.Text = DateTime.Now.TimeOfDay.Hours.ToString();
+            XmlDocument doc = new XmlDocument();
+            doc.Load("hotel_tariff.xml");
+            XmlNode node = doc.DocumentElement;
+
+            try
+            {
+                foreach (XmlNode pnode in node)
+                {
+                    if (pnode.Attributes[0].InnerText == "LE CASTLE")
+                    {
+
+                        XmlNodeList child = pnode.ChildNodes;
+                        foreach (XmlNode room in child)
+                        {
+                            if (room.Attributes[0].Name == "r_name")
+                            {
+                                rtype.Items.Add(room.Attributes[0].InnerText);
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
+            }
         }
     }
 }

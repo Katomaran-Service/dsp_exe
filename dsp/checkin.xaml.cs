@@ -979,7 +979,7 @@ namespace dsp
             {
                 check_in_struct checkin = new check_in_struct();
                 room_update room = new room_update();
-                checkin.phonenumber = cc1.Text + info_ph1.Text;
+                
                 int count = roomgrid.Items.Count;
                 if (count == 1)
                 {
@@ -994,54 +994,113 @@ namespace dsp
                 {
                     dynamic list2 = list[i];
                     room.phonenumber = info_ph1.Text;
-                    checkin.hotel_name = hotel_name.Text;
-                    checkin.room_no = list2.ROOMNO;
                     room.room_no = list2.ROOMNO;
-                    checkin.room_type = list2.ROOMTYPE;
                     room.room_type = list2.ROOMTYPE;
-                    checkin.room_amt = list2.AMOUNT;
-                    checkin.no_of_persons = list2.COUNT;
-
-                    string[] chin = list2.CHECKIN1.Split(' ');
-                    checkin.checkin_date = chin[0];
-                    checkin.checkin_time = chin[1];
+                    string[] chin = list2.CHECKIN1.Split(' ');                    
                     room.checkin_date = chin[0];
                     room.checkin_time = chin[1];
-                    string[] chout = list2.CHECKOUT1.Split(' ');
-                    checkin.checkout_date = chout[0];
-                    checkin.checkout_time = chout[1];
+                    string[] chout = list2.CHECKOUT1.Split(' ');                    
                     room.checkout_date = chout[0];
                     room.checkout_time = chout[1];
                     room.status = "0";
                     room.s_name = dbhandler.name;
-                    room.remark = "CHECKIN";
-                    checkin.advance_used = "false";
-                    checkin.advance_paid = info_advance_paid.Text;
-                    checkin.discount = info_discount.Text;
-                    checkin.total_amt = info_ramount.Text;
-                    checkin.referral = info_segment.Text;
-                    checkin.transaction = info_tid.Text;
-
-                    checkin.kot_amount = "0";
-                    checkin.kot_paid = "false";
-                    checkin.nc_kot_count = "0";
-                    checkin.plan = info_plan.Text;
-                    checkin.post_charges = "0";
-                    checkin.post_paid = "false";
-                    checkin.Invoice_number = "0";
-                    checkin.room_paid = "false";
-                    checkin.check_out = "0";
-                    bool suc = dbhandler.Checkin(checkin);
-                    bool suc1 = dbhandler.room_status_update(room);
-                    if (suc)
+                    room.remark = "CHECKIN";                    
+                    if (list2.ROOMNO == "book" && list2.but_stat == "0")
                     {
-                        MessageBox.Show(list2.ROOMNO + " checked in");
-                        room1.Append(list2.ROOMNO+",");
+                        booking_details book = new booking_details();
+                        Random rnd = new Random();
+                        int days = 0;
+                        book.phonenumber = cc1.Text + info_ph1.Text;
+                        book.hotel = hotel_name.Text;
+                        book.room_type = list2.ROOMTYPE;
+                        book.book_date = chin[0];
+                        book.book_time = chin[1];
+                        book.checkout_date = chout[0];
+                        book.checkout_time = chout[1];
+                        book.advance_paid = info_advance_paid.Text;
+                        book.status = "booked";
+                        book.r_amt= list2.AMOUNT;
+                        book.count= list2.COUNT;
+                        book.segment= info_segment.Text;
+                        book.discount= info_discount.Text;
+                        book.tid= info_tid.Text;
+                        string[] cin = chin[1].Split(':');
+                        string[] cout = chout[1].Split(':');
+                        if (Convert.ToInt32(cin[1]) < 10)
+                            days++;
+                        if (Convert.ToInt32(cout[1]) > 10)
+                            days++;
+                        DateTime in_date = DateTime.Parse(chin[0]);
+                        DateTime out_date = DateTime.Parse(chout[0]);
+                        TimeSpan tspan = out_date - in_date;
+                        int diff_day = tspan.Days;
+                        book.period = (diff_day + days).ToString();
+                        string bookid = dbhandler.bookid();
+                        if (bookid == "")
+                            book.invoice = "1";
+                        else
+                            book.invoice = (Convert.ToInt32(bookid) + 1).ToString();
+                        MessageBox.Show("YOUR BOOKING ID:" + book.invoice);
+                       // log = "STATUS:BOOK PHONE NUMBER:" + booking_ph.Text + " ROOM NUMBER:" + rnum.Text + " BOOKING DATE:" + book_date.Text + " BOOKING TIME:" + bookin_time.Text;
+                        bool success = dbhandler.room_book_check(hotel_name.Text,list2.ROOMTYPE, chin[0]);
+                        if (success)
+                        {
+                            bool success1 = dbhandler.book_room(book);
+
+                            if (success1)
+                            {
+                                //dbhandler.log_update(dbhandler.Frontdesk_log, log);
+                                MessageBox.Show("ROOM BOOKED");
+                            }
+
+                            else
+                                MessageBox.Show("NOT BOOKED");
+                        }
+                        else
+                        {
+                            MessageBox.Show("ROOM ALREADY BOOKED");
+                        }
+                    }
+                    else
+                    {
+                        checkin.phonenumber = cc1.Text + info_ph1.Text;
+                        checkin.hotel_name = hotel_name.Text;
+                        checkin.room_no = list2.ROOMNO;
+                        checkin.room_type = list2.ROOMTYPE;
+                        checkin.room_amt = list2.AMOUNT;
+                        checkin.no_of_persons = list2.COUNT;
+                        checkin.checkin_date = chin[0];
+                        checkin.checkin_time = chin[1];
+                        checkin.checkout_date = chout[0];
+                        checkin.checkout_time = chout[1];
+                        checkin.advance_used = "false";
+                        checkin.advance_paid = info_advance_paid.Text;
+                        checkin.discount = info_discount.Text;
+                        checkin.total_amt = info_ramount.Text;
+                        checkin.referral = info_segment.Text;
+                        checkin.transaction = info_tid.Text;
+                        checkin.kot_amount = "0";
+                        checkin.kot_paid = "false";
+                        checkin.nc_kot_count = "0";
+                        checkin.plan = info_plan.Text;
+                        checkin.post_charges = "0";
+                        checkin.post_paid = "false";
+                        checkin.Invoice_number = "0";
+                        checkin.room_paid = "false";
+                        checkin.check_out = "0";
+                        bool suc = dbhandler.Checkin(checkin);
+                        bool suc1 = dbhandler.room_status_update(room);
+                        if (suc)
+                        {
+                            MessageBox.Show(list2.ROOMNO + " checked in");
+                            room1.Append(list2.ROOMNO + ",");
+                        }
+                        if (room1.Length != 0)
+                            dbhandler.sms_sender("DREAM STAR PARADISE\nROOMS CHECKED IN:" + room1, checkin.phonenumber);
                     }
                     
                 }
-                if (room1.Length != 0)
-                    dbhandler.sms_sender("DREAM STAR PARADISE\nROOMS CHECKED IN:" + room1, checkin.phonenumber);
+                
 
 
             }
@@ -1177,7 +1236,7 @@ namespace dsp
                             info_foreign.IsChecked = true;
                         cutomer_grid.IsEnabled = false;
                         book_avail avail = new book_avail();
-                        avail = dbhandler.book_retrieve(cc1.Text, info_ph1.Text);
+                        avail = dbhandler.book_retrieve(cc1.Text+ info_ph1.Text);
                         if (avail.available == "true")
                         {
                             string[] roomtypet = avail.room_type.Split(',');
@@ -1300,15 +1359,15 @@ namespace dsp
         {
             string status = "current";
             string rval = "book";
-            if ((hotel_name.Text != "") && (room_type.Text != "") && (room_no.Text != "" || book_room!="") && ((count.Text != "COUNT") || book_count!="") && (info_plan.Text != ""))
+            if ((hotel_name.Text != "") && (room_type.Text != "") && ((count.Text != "COUNT") || book_count!="") && (info_plan.Text != ""))
             {
                 roomgrid.ItemsSource = null;
-                if ((checkin_date.SelectedDate > DateTime.Now.AddDays(1)) && (Convert.ToInt32(checkin_time.SelectedItem) > 10))
+                if ((checkin_date.SelectedDate > DateTime.Now.AddDays(1)) && (Convert.ToInt32(checkin_time.SelectedItem) >= 10))
                 {
                     status = "booking";
 
                 }
-                else
+                else if(room_no.Text != "" || book_room != "")
                 {
                     if(room_no.Text != "")
                     {
@@ -1448,6 +1507,7 @@ namespace dsp
                 }
 
             }
+           
 
     }
     }

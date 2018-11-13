@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ROOM>
   <ROOM_NAME rname="Romantic Duo Dwell">
-    <RNO id="1">101</RNO>
-    <RNO id="1">102</RNO>
-    <RNO id="1">103</RNO>
-    <RNO id="1">104</RNO>
-    <RNO id="1">105</RNO>
-    <RNO id="1">106</RNO>
-    <RNO id="1">110</RNO>
-    <RNO id="1">201</RNO>
-    <RNO id="1">202</RNO>
+    <RNO id="3">101</RNO>
+    <RNO id="3">102</RNO>
+    <RNO id="3">103</RNO>
+    <RNO id="3">104</RNO>
+    <RNO id="0">105</RNO>
+    <RNO id="3">106</RNO>
+    <RNO id="0">110</RNO>
+    <RNO id="0">201</RNO>
+    <RNO id="0">202</RNO>
     <RNO id="1">203</RNO>
     <RNO id="1">204</RNO>
     <RNO id="1">205</RNO>

@@ -199,12 +199,44 @@ namespace dsp
                 foreach(dynamic list in Items)
                 {
                     updation.room_no = list.ROOMNO;
-                   // updation.total = checkout_total.Text;
+                    if (list.kot_check)
+                    {
+                        updation.kot_paid = "true";
+                        updation.transaction_detail = checkout_tid.Text;
+                    }
+                       
+                    else
+                        updation.kot_paid = "false";
+                    if (list.post_check)
+                    {
+                        updation.post_paid = "true";
+                        updation.transaction_detail = checkout_tid.Text;
+                    }
+                        
+                    else
+                        updation.post_paid = "false";
+                    if (list.room_check)
+                    {
+                        updation.room_amt_paid = "true";
+                        updation.transaction_detail = checkout_tid.Text;
+                    }
+                       
+                    else
+                        updation.room_amt_paid = "false";
+                    if(list.all_check)
+                    {
+                        updation.kot_paid = "true";
+                        updation.room_amt_paid = "true";
+                        updation.post_paid = "false";
+                        updation.remark = "DIRTY";
+                        //updation.transaction_detail = checkout_tid1.Text;
+                        updation.checkout = "1";
+                    }
+                       
+                    updation.total = checkout_amt.Text;
                     //updation.discount = checkout_discount.Text;
                     //updation.post_charge = checkout_post_ch.Text;
-                    updation.remark = "DIRTY";
-                    //updation.transaction_detail = checkout_tid1.Text;
-                    updation.checkout = "1";
+                    
                 }
                 
             }

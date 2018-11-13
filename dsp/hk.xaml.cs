@@ -50,5 +50,11 @@ namespace dsp
         {
 
         }
+
+        private void hlog_but_Click(object sender, RoutedEventArgs e)
+        {
+            hlog.url = "hk";
+            NavigationService.Navigate(new Uri("/hlog.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }

@@ -1097,14 +1097,29 @@ namespace dsp
             }
             return false;
         }
-        public static Boolean log_update(String log_path, String log_text)
+        
+        public static Boolean log_update(log_details log)
         {
+            String logsql = String.Format(@"insert into [log](user_name,time,date,remark,category,section)values(@UNAME,@TIME,@DATE,@REMARK,@CATEGORY,@SECTION)");
             try
             {
-                StreamWriter sw = new StreamWriter(log_path, true);
-                sw.WriteLine(log_text);
-                sw.Close();
-                return true;
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand(logsql, conn))
+                    {
+                        command.Parameters.AddWithValue("@UNAME", log.uname);
+                        command.Parameters.AddWithValue("@TIME", log.time);
+                        command.Parameters.AddWithValue("@DATE", log.date);
+                        command.Parameters.AddWithValue("@REMARK", log.remark);
+                        command.Parameters.AddWithValue("@CATEGORY", log.category);
+                        command.Parameters.AddWithValue("@SECTION", log.section);
+                        command.ExecuteNonQuery();
+                        conn.Close();
+                        return true;
+
+                    }
+                }
 
             }
             catch (Exception e)
@@ -1113,6 +1128,66 @@ namespace dsp
             }
             return false;
         }
+        public static Boolean log_delete()
+        {
+            String logdelsql = String.Format(@"truncate table log");
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand(logdelsql, conn))
+                    {
+                        command.ExecuteNonQuery();
+                        conn.Close();
+                        return true;
+
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return false;
+        }
+        public static log_avail logdetails(String section,string date)
+        {
+            log_avail log = new log_avail();
+            log.avail = false;
+            String user_sql = String.Format(@"select * from [log] where section=@SEC and date=@DATE");
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                    SqlCommand myCommand = new SqlCommand(user_sql, conn);
+                    myCommand.CommandType = System.Data.CommandType.Text;
+                    myCommand.Parameters.AddWithValue("@SEC", section);
+                    myCommand.Parameters.AddWithValue("@DATE", date);
+                    SqlDataReader myReader = myCommand.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        log.detail.uname += ((string)myReader["user_name"]).TrimEnd()+",";
+                        log.detail.time += ((string)myReader["time"]).TrimEnd()+",";
+                        log.detail.date += ((string)myReader["date"]).TrimEnd();
+                        log.detail.category += ((string)myReader["category"]).TrimEnd()+",";
+                        log.detail.section += ((string)myReader["section"]).ToString();
+                        log.detail.remark += ((string)myReader["remark"]).ToString()+",";
+                        log.avail = true;
+                    }
+                }
+                conn.Close();
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return log;
+        }
+
         public static Boolean user_add(user1 add)
         {
             String add_user = String.Format(@"insert into [User](name,designation,user_name,password,front_desk,f_b,h_k,store,report,add_u,remark)values(@NAME,@JOB,@U_NAME,@PASS,@FD,@FB,@HK,@STORE,@REPORT,@ADD,@REMARK)");
@@ -1245,9 +1320,9 @@ namespace dsp
             }
             return false;
         }
-        public static Boolean room_book_check(String rnum, String book_date)
+        public static Boolean room_book_check(string hname,String rtype, String book_date)
         {
-            String book_check = String.Format(@"select count(*) from booking_status where booked_date=@BDATE and room_no=@RNUM");
+            String book_check = String.Format(@"select count(*) from booking_status where booked_date=@BDATE and roomtype=@RTYPE");
             int count = 0;
             try
             {
@@ -1257,13 +1332,37 @@ namespace dsp
                     SqlCommand myCommand = new SqlCommand(book_check, conn);
                     myCommand.CommandType = System.Data.CommandType.Text;
                     myCommand.Parameters.AddWithValue("@BDATE", book_date);
-                    myCommand.Parameters.AddWithValue("@RNUM", rnum);
+                    myCommand.Parameters.AddWithValue("@RTYPE", rtype);
                     count = Convert.ToInt32(myCommand.ExecuteScalar());
-                    if (count == 0)
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load("hotel_tariff.xml");
+                    XmlNode node = doc.DocumentElement;
+                    foreach (XmlNode pnode in node)
                     {
-                        conn.Close();
-                        return true;
+                        if (pnode.Attributes[0].InnerText == hname)
+                        {
+                            XmlNodeList child = pnode.ChildNodes;
+                            foreach (XmlNode room in child)
+                            {
+                                if (room.Attributes[0].InnerText == rtype)
+                                {
+                                    foreach (XmlNode room_ch in room.ChildNodes)
+                                    {
+                                        if (room_ch.Name == "COUNT")
+                                        {
+                                            if (count < Convert.ToInt32(room_ch.InnerText ))
+                                            {
+                                                conn.Close();
+                                                return true;
+                                            }
+                                        }
+                                    }
+                                 }
+                            }
+                     
+                         }
                     }
+                    
 
                 }
             }
@@ -1273,9 +1372,39 @@ namespace dsp
             }
             return false;
         }
+        public static string bookid()
+        {
+            string val="";
+            string sql = String.Format(@"select max(cast ([booking_id] as int)) as id from booking_status");
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                    using(SqlCommand com=new SqlCommand(sql, conn))
+                    {
+                        SqlDataReader myReader = com.ExecuteReader();
+                        while (myReader.Read())
+                        {
+                            if(myReader["id"] != DBNull.Value)
+                            {
+                                val = ((int)myReader["id"]).ToString();
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            conn.Close();
+            return val;
+        }
         public static Boolean book_room(booking_details book)
         {
-            String booksql = String.Format(@"insert into [booking_status](booking_id,hotel,room_no,roomtype,booked_date,booked_intime,checkout_date,checkout_time,period,phonenumber,name,advance_paid,status)values(@BID,@HOTEL,@RNUM,@RTYPE,@BDATE,@BTIME,@CDATE,@CTIME,@PERIOD,@PH,@NAME,@ADVANCE,@STATUS)");
+            String booksql = String.Format(@"insert into [booking_status](booking_id,hotel,roomtype,booked_date,booked_intime,checkout_date,checkout_time,period,phonenumber,advance_paid,status,count,room_amount,segment,discount,tid)values(@BID,@HOTEL,@RTYPE,@BDATE,@BTIME,@CDATE,@CTIME,@PERIOD,@PH,@ADVANCE,@STATUS,@COUNT,@RAMT,@SEGMENT,@DISCOUNT,@TID)");
             try
             {
                 if (conn.State == ConnectionState.Closed)
@@ -1285,7 +1414,6 @@ namespace dsp
                     {
                         command.Parameters.AddWithValue("@BID", book.invoice);
                         command.Parameters.AddWithValue("@HOTEL", book.hotel);
-                        command.Parameters.AddWithValue("@RNUM", book.roomnumber);
                         command.Parameters.AddWithValue("@RTYPE", book.room_type);
                         command.Parameters.AddWithValue("@BDATE", book.book_date);
                         command.Parameters.AddWithValue("@BTIME", book.book_time);
@@ -1293,9 +1421,13 @@ namespace dsp
                         command.Parameters.AddWithValue("@CTIME", book.checkout_time);
                         command.Parameters.AddWithValue("@PERIOD", book.period);
                         command.Parameters.AddWithValue("@PH", book.phonenumber);
-                        command.Parameters.AddWithValue("@NAME", book.name);
                         command.Parameters.AddWithValue("@ADVANCE", book.advance_paid);
                         command.Parameters.AddWithValue("@STATUS", book.status);
+                        command.Parameters.AddWithValue("@COUNT", book.count);
+                        command.Parameters.AddWithValue("@RAMT", book.r_amt);
+                        command.Parameters.AddWithValue("@SEGMENT", book.segment);
+                        command.Parameters.AddWithValue("@TID", book.tid);
+                        command.Parameters.AddWithValue("@DISCOUNT", book.discount);
                         command.ExecuteNonQuery();
                         conn.Close();
                         return true;
@@ -1309,9 +1441,9 @@ namespace dsp
             }
             return false;
         }
-        public static book_avail book_retrieve(String code,String phone)
+        public static book_avail book_retrieve(String phone)
         {
-            String booksql = String.Format(@"select * from [booking_status] where phonenumber=@PHONE and country_code=@CC and status='1' and booked_date=@BDATE and booked_intime<=@BTIME");
+            String booksql = String.Format(@"select * from [booking_status] where phonenumber=@PHONE and status='1' and booked_date=@BDATE and booked_intime<=@BTIME");
             book_avail detail = new book_avail();
             try
             {
@@ -1324,7 +1456,6 @@ namespace dsp
                     myCommand.Parameters.AddWithValue("@BDATE", DateTime.Now.ToString("M/dd/yyyy"));
                     myCommand.Parameters.AddWithValue("@BTIME", DateTime.Now.Hour);
                     Console.WriteLine(DateTime.Now.ToString("M/dd/yyyy") + "" + DateTime.Now.Hour);
-                    myCommand.Parameters.AddWithValue("@CC", code);
                     SqlDataReader myReader = myCommand.ExecuteReader();
                     detail.available = "false";
                     while (myReader.Read())

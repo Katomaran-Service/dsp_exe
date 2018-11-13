@@ -58,6 +58,10 @@
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -100,6 +104,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="cancel_book.xaml.cs">
+      <DependentUpon>cancel_book.xaml</DependentUpon>
+    </Compile>
     <Compile Include="checkin.xaml.cs">
       <DependentUpon>checkin.xaml</DependentUpon>
     </Compile>
@@ -111,6 +118,9 @@
     </Compile>
     <Compile Include="data.cs" />
     <Compile Include="dbhandler.cs" />
+    <Compile Include="entry_store_pg.xaml.cs">
+      <DependentUpon>entry_store_pg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="front_desk.xaml.cs">
       <DependentUpon>front_desk.xaml</DependentUpon>
     </Compile>
@@ -122,6 +132,12 @@
     </Compile>
     <Compile Include="home.xaml.cs">
       <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_pg.xaml.cs">
+      <DependentUpon>inventory_pg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="issue_pg.xaml.cs">
+      <DependentUpon>issue_pg.xaml</DependentUpon>
     </Compile>
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
@@ -141,10 +157,20 @@
     <Compile Include="startupscreen.xaml.cs">
       <DependentUpon>startupscreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="store.xaml.cs">
+      <DependentUpon>store.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="store_purchase.xaml.cs">
+      <DependentUpon>store_purchase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="structdata.cs" />
     <Compile Include="update_customer.xaml.cs">
       <DependentUpon>update_customer.xaml</DependentUpon>
     </Compile>
+    <Page Include="cancel_book.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="checkin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="clean_room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="entry_store_pg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,6 +200,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="inventory_pg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="issue_pg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +244,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="startupscreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="store.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="store_purchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -439,6 +485,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-warehouse-filled-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-exit-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-purchase-order-filled-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-import-filled-100.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

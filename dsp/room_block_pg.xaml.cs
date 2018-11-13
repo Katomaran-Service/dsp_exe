@@ -27,47 +27,7 @@ namespace dsp
         public room_block_pg()
         {
             InitializeComponent();
-            val = 1;
-            block_time.Items.Add("0");
-            release_time.Items.Add("0");
-            for (int i = DateTime.Now.Hour; i < 24; i++)
-                block_time.Items.Add(i);
-            for (int i = 0; i < 24; i++)
-            {
-                release_time.Items.Add(i);
-            }
-            blockdate.SelectedDate = DateTime.Today;
-            releasedate.DisplayDateStart = DateTime.Today.AddDays(1);
-            releasedate.SelectedDate = DateTime.Today.AddDays(1);
-            release_time.Text = "10";
-            block_time.Text = DateTime.Now.TimeOfDay.Hours.ToString();
-            XmlDocument doc = new XmlDocument();
-            doc.Load("hotel_tariff.xml");
-            XmlNode node = doc.DocumentElement;
-
-            try
-            {
-                foreach (XmlNode pnode in node)
-                    {
-                        if (pnode.Attributes[0].InnerText == "LE CASTLE")
-                        {
-
-                            XmlNodeList child = pnode.ChildNodes;
-                            foreach (XmlNode room in child)
-                            {
-                                if (room.Attributes[0].Name == "r_name")
-                                {
-                                    rtype.Items.Add(room.Attributes[0].InnerText);
-
-                                }
-                            }
-                        }
-                    }
-            }
-            catch (Exception m)
-            {
-                MessageBox.Show(m.Message);
-            }
+            clear();
         }
 
         private void backbut_Click(object sender, RoutedEventArgs e)
@@ -136,11 +96,14 @@ namespace dsp
                     {
                         case true:
                         dbhandler.msgbox("ROOM:\n" + room_no.Text + "\nMOVED TO BLOCK STATE", "ROOM BLOCK","Ok","",false);
-                            break;
+                        clear();
+                        break;
                         case false:
                         MaterialMessageBox.ShowError("ROOM NOT BLOCKED\n" + room_no.Text);
+                        clear();
                         break;
                     }
+                
             }
             else
             {
@@ -183,6 +146,55 @@ namespace dsp
                 {
                     MessageBox.Show(m.Message);
                 }
+            }
+        }
+        public void clear()
+        {
+            val = 1;
+            block_time.Items.Clear();
+            release_time.Items.Clear();
+            room_no.Items.Clear();
+            rtype.Items.Clear();
+            
+            block_time.Items.Add("0");
+            release_time.Items.Add("0");
+            for (int i = DateTime.Now.Hour; i < 24; i++)
+                block_time.Items.Add(i);
+            for (int i = 0; i < 24; i++)
+            {
+                release_time.Items.Add(i);
+            }
+            blockdate.SelectedDate = DateTime.Today;
+            releasedate.DisplayDateStart = DateTime.Today.AddDays(1);
+            releasedate.SelectedDate = DateTime.Today.AddDays(1);
+            release_time.Text = "10";
+            block_time.Text = DateTime.Now.TimeOfDay.Hours.ToString();
+            XmlDocument doc = new XmlDocument();
+            doc.Load("hotel_tariff.xml");
+            XmlNode node = doc.DocumentElement;
+
+            try
+            {
+                foreach (XmlNode pnode in node)
+                {
+                    if (pnode.Attributes[0].InnerText == "LE CASTLE")
+                    {
+
+                        XmlNodeList child = pnode.ChildNodes;
+                        foreach (XmlNode room in child)
+                        {
+                            if (room.Attributes[0].Name == "r_name")
+                            {
+                                rtype.Items.Add(room.Attributes[0].InnerText);
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
             }
         }
     }

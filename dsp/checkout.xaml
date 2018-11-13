@@ -144,7 +144,7 @@
                 <Label x:Name="label_Copy" HorizontalAlignment="Left" Height="39" Margin="75,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109" Content="AMOUNT :" FontWeight="Bold" FontSize="15"/>
                 <TextBox x:Name="checkout_amt" HorizontalAlignment="Left" Height="39" Margin="198,443,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" FontSize="15" IsReadOnly="True"/>
                 <Label x:Name="label_Copy1" HorizontalAlignment="Left" Height="39" Margin="957,443,0,0" Grid.Row="1" VerticalAlignment="Top" Width="155" Content="TRANSACTION ID:" FontWeight="Bold" FontSize="15"/>
-                <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="39" Margin="1117,443,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" FontSize="15"/>
+                <TextBox x:Name="checkout_tid" HorizontalAlignment="Left" Height="39" Margin="1117,443,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" FontSize="15"/>
                 <Button x:Name="checkout_but" Content="Button" HorizontalAlignment="Left" Height="55" Margin="634,510,0,0" Grid.Row="1" VerticalAlignment="Top" Width="143" Template="{DynamicResource CHECKOUT}" Click="checkout_but_Click"/>
                 <Viewbox Stretch="Uniform" Margin="75,59,1220,820" Grid.Row="1">
                     <Label x:Name="label_Copy2" HorizontalAlignment="Left" Height="39"  Grid.Row="1" VerticalAlignment="Top" Width="143" Content="CUSTOMER NAME:" FontWeight="Bold" FontSize="15"/>

@@ -147,7 +147,7 @@ namespace dsp {
         
         #line 147 "..\..\checkout.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox textBox1_Copy;
+        internal System.Windows.Controls.TextBox checkout_tid;
         
         #line default
         #line hidden
@@ -304,7 +304,7 @@ namespace dsp {
             this.label_Copy1 = ((System.Windows.Controls.Label)(target));
             return;
             case 18:
-            this.textBox1_Copy = ((System.Windows.Controls.TextBox)(target));
+            this.checkout_tid = ((System.Windows.Controls.TextBox)(target));
             return;
             case 19:
             this.checkout_but = ((System.Windows.Controls.Button)(target));

@@ -87,6 +87,7 @@ namespace dsp
             store_list.Background = new SolidColorBrush(Colors.Wheat);
             report_list.Background = new SolidColorBrush(Colors.Transparent);
             admin_list.Background = new SolidColorBrush(Colors.Transparent);
+            sub_frame.Content = new store();
         }
 
         private void report_Click(object sender, RoutedEventArgs e)

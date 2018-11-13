@@ -2,6 +2,7 @@
  <record>
     <HOTEL name="LE CASTLE">
       <ROOM r_name="Romantic Duo Dwell">
+		<COUNT>15</COUNT>
         <NUMBER>2</NUMBER>
         <NORMAL_TARIFF>3500</NORMAL_TARIFF>
         <EXTRA_TARIFF>500</EXTRA_TARIFF>
@@ -9,6 +10,7 @@
         <EXTRA>1</EXTRA>
       </ROOM>
       <ROOM r_name="Quadratic Duplet chamber">
+		<COUNT>5</COUNT>
         <NUMBER>3</NUMBER>
         <NORMAL_TARIFF>4500</NORMAL_TARIFF>
         <EXTRA_TARIFF>500</EXTRA_TARIFF>
@@ -16,6 +18,7 @@
         <EXTRA>1</EXTRA>
       </ROOM>
       <ROOM r_name="Nuclear Area">
+		<COUNT>2</COUNT>
         <NUMBER>4</NUMBER>
         <NORMAL_TARIFF>7500</NORMAL_TARIFF>
         <EXTRA_TARIFF>500</EXTRA_TARIFF>
@@ -23,6 +26,7 @@
         <EXTRA>2</EXTRA>
       </ROOM>
       <ROOM r_name="Star Lounge">
+		<COUNT>1</COUNT>
         <NUMBER>1</NUMBER>
         <NORMAL_TARIFF>7500</NORMAL_TARIFF>
         <EXTRA_TARIFF>500</EXTRA_TARIFF>
@@ -30,6 +34,7 @@
         <EXTRA>1</EXTRA>
       </ROOM>
       <ROOM_EXT r_name="Banquet Hall">
+		<COUNT>1</COUNT>
         <NUMBER>40</NUMBER>
         <SEASON_TARIFF>10000</SEASON_TARIFF>
         <NORMAL_TARIFF>10000</NORMAL_TARIFF>
@@ -37,6 +42,7 @@
         <EXTRA>0</EXTRA>
       </ROOM_EXT>
       <ROOM_EXT r_name="Dormitory Territory">
+		<COUNT>20</COUNT>
         <NUMBER>20</NUMBER>
         <SEASON_TARIFF>400</SEASON_TARIFF>
         <NORMAL_TARIFF>200</NORMAL_TARIFF>

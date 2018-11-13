@@ -10,9 +10,18 @@ namespace dsp
     {
         public struct booking_details
         {
-            public string name, phonenumber, hotel, room_type, booking_source, book_date, checkout_date, book_time, checkout_time, period, advance_paid, invoice, roomnumber, status;
+            public string phonenumber, hotel, room_type, segment, book_date, checkout_date, book_time, checkout_time, period, advance_paid, invoice, status,count,r_amt,discount,tid,mode;
 
 
+        }
+        public struct log_details
+        {
+            public string uname, time, date, remark, category, section;
+        }
+        public struct log_avail
+        {
+            public log_details detail;
+            public bool avail;
         }
         public struct book_avail
         {
@@ -49,7 +58,7 @@ namespace dsp
         }
         public struct checkout_update
         {
-            public string phonenumber, room_no, checkoutdate, checkouttime, room_amt, discount, transaction_detail, total, checkout, remark, post_charge;
+            public string phonenumber, room_no, checkoutdate, checkouttime, room_amt_paid, transaction_detail, total, checkout, remark, post_paid,kot_paid,all_paid;
         }
         public struct user1
         {

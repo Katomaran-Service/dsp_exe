@@ -19,9 +19,9 @@
             </Button.Background>
         </Button>
         <ScrollViewer HorizontalAlignment="Stretch" Margin="0,51,0,0"  Background="#fff0edc4" HorizontalScrollBarVisibility="Auto">
-            <DataGrid Margin="15,70,0,10" x:Name="log_grid" IsReadOnly="True" AutoGenerateColumns="False" HeadersVisibility="Column" SelectedIndex="-1" SelectionChanged="product_grid_SelectionChanged">
+            <DataGrid Margin="15,70,0,10" x:Name="log_grid" IsReadOnly="True" AutoGenerateColumns="False" HeadersVisibility="Column" SelectedIndex="-1">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="S.NO" Binding="{Binding num}" Width="100">
+                    <DataGridTextColumn Header="S.NO" Binding="{Binding SNO}" Width="100">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -30,7 +30,7 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="USER NAME" Binding="{Binding username}" Width="320">
+                    <DataGridTextColumn Header="USER NAME" Binding="{Binding UNAME}" Width="320">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -39,7 +39,7 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="TIME" Binding="{Binding time}" Width="300">
+                    <DataGridTextColumn Header="TIME" Binding="{Binding TIME}" Width="300">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -48,7 +48,7 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="CATEGORY" Binding="{Binding category}" Width="400">
+                    <DataGridTextColumn Header="CATEGORY" Binding="{Binding CATEGORY}" Width="400">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -57,7 +57,7 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="REMARK" Binding="{Binding remark}" Width="400">
+                    <DataGridTextColumn Header="REMARK" Binding="{Binding REMARK}" Width="400">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -69,8 +69,8 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Viewbox Stretch="Uniform" Margin="750,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="31" Width="60">
-            <TextBlock x:Name="textBlock123"  TextAlignment="Center" TextWrapping="Wrap" Text="LOG" FontWeight="Bold"  Width="Auto"  FontSize="20"/>
+        <Viewbox Stretch="Uniform" Margin="700,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="31" Width="300">
+            <TextBlock x:Name="textBlock123"  TextAlignment="Center" TextWrapping="Wrap" Text="" FontWeight="Bold"  Width="Auto"  FontSize="20"/>
         </Viewbox>
         <materialDesign:MaterialDateDisplay HorizontalAlignment="Right" Width="160" Height="64" VerticalAlignment="Top" Margin="0,51,41,0"/>
     </Grid>

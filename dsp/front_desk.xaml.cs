@@ -45,5 +45,11 @@ namespace dsp
         {
             NavigationService.Navigate(new Uri("/checkout.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void flog_but_Click(object sender, RoutedEventArgs e)
+        {
+            hlog.url = "fd";
+            NavigationService.Navigate(new Uri("/hlog.xaml", UriKind.RelativeOrAbsolute));
+        }
     }
 }
